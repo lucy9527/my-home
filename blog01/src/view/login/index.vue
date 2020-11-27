@@ -1,0 +1,107 @@
+<!--
+ * @Description: 
+ * @Author: Do not edit
+ * @Date: 2020-11-19 10:25:40
+ * @LastEditTime: 2020-11-26 21:05:14
+ * @LastEditors: HongXuan.Lu
+-->
+<template>
+  <div class="login-box">
+    <div class="login-container">
+      <div class="login-input">
+        <div>
+          <div class="input-box">
+            <label for="username">用户名：</label>
+            <el-input
+              id="username"
+              v-model="userData.username"
+              suffix-icon="el-icon-user"
+            ></el-input>
+          </div>
+          <div class="input-box">
+            <label for="password">密码：</label>
+            <el-input
+              id="password"
+              v-model="userData.password"
+              suffix-icon="el-icon-lock"
+            ></el-input>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- 忘记密码，待添加 -->
+      </div>
+      <div class="login-btn">
+        <el-button type="primary" @click="loginBtn">登录</el-button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import request from "../../request/ajax";
+export default {
+  data() {
+    return {
+      userData: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async loginBtn() {
+      const res = await request("login", this.userData);
+      console.log("res", res);
+      if(res === 'yes'){
+        this.$message.success("登录成功！")
+        this.$router.push('home')
+      }
+    },
+  },
+  mounted() {},
+};
+</script>
+
+<style lang="scss">
+@import "./index";
+.login-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include center;
+  .login-container {
+    width: 35%;
+    height: 30%;
+    border: 1px solid lightblue;
+    background-color: rgb(199, 237, 204);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .login-input {
+      @include center;
+      .input-box {
+        display: flex;
+        font-size: 13px !important;
+        line-height: 28px !important;
+        padding: 10px 10px 10px 0;
+        label {
+          width: 100px;
+        }
+        .el-input {
+          @include inputBox;
+        }
+      }
+    }
+    .login-btn {
+      .el-button {
+        span {
+          padding: 0 90px;
+        }
+      }
+    }
+  }
+}
+</style>
