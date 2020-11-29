@@ -11,7 +11,7 @@ import login from '../view/login/index.vue'
 import home from '../view/home/home.vue'
 import myArticle from '../view/article/myArticle.vue'
 import game from '../view/game'
-
+import edit from '../view/blog-edit/edit'
 
 Vue.use(VueRouter)
 
@@ -36,10 +36,14 @@ const routes = [
     path: "/myArticle",
     name : 'myArticle',
     component : myArticle  },
-    {
-      path: "/game",
-      name : 'game',
-      component : game  }
+  {
+    path: "/game",
+    name : 'game',
+    component : game  },
+  {
+    path: "/edit",
+    name : 'edit',
+    component : edit  },    
 ]
 
 const router = new VueRouter({routes})

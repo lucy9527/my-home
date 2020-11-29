@@ -6,12 +6,30 @@
  * @LastEditors: HongXuan.Lu
 -->
 <template>
-  <div>游戏页面</div>
+  <div class="game-page">
+    <header-vue></header-vue>
+    <main-vue></main-vue>
+  </div>
 </template>
 
 <script>
-export default {};
+import headerVue from '../../components/common/header';
+import mainVue from './main'
+export default {
+  components:{
+    headerVue,
+    mainVue
+  },
+  data(){
+    return {
+
+    }
+  }
+};
 </script>
 
 <style>
+.game-page{
+  height: 100%;
+}
 </style>

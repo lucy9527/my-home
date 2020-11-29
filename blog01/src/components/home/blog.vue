@@ -3,7 +3,7 @@
       <div class="main-content">
         <div class="blog-box">
           <div class="blog-intro">
-            <div class="blog-name">百家讲坛</div>
+            <div class="blog-name hand">百家讲坛</div>
             <div class="blog-date">2020-1-12</div>
           </div>
           <div class="blog-part">
@@ -15,7 +15,7 @@
         </div>
         <div class="blog-box">
           <div class="blog-intro">
-            <div class="blog-name">vue</div>
+            <div class="blog-name hand">vue</div>
             <div class="blog-date">2020.01.02</div>
           </div>
           <div class="blog-part">

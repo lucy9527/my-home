@@ -54,5 +54,4 @@ function dbOptions(op , data){
       break;
   }
 }
-
 module.exports = dbOptions;

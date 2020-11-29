@@ -1,8 +1,10 @@
 <template>
     <div class="header">
       <div class="left">
-        <a @click="goTo('myArticle')">我的博客</a>
-        <div @click="goTo('game')">游戏页面</div>
+        <a @click="goTo('home')" class="hand">首页</a>
+        <a @click="goTo('myArticle')" class="hand">我的博客</a>
+        <a @click="goTo('game')" class="hand">游戏页面</a>
+        <a @click="goTo('edit')" class="hand">博客编辑</a>
       </div>
       <div class="middle"></div>
       <div class="right"></div>
@@ -22,17 +24,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './header.scss';
-  .header{
-    height: 50px;
-    @include flexRow;
-    .left , .mid , .right{
-      @include flexRow;
-    }
-    .left{
-      a{
-        padding-right: 10px;
-      }
-    }
-  }
+
 </style>

@@ -1,3 +1,12 @@
 body{
   text-align: left;
 }
+
+@import './header.scss';
+
+.hand {
+  cursor: pointer;
+  &:hover{
+    color:purple;
+  }
+}
