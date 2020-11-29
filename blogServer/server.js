@@ -21,12 +21,19 @@ app.use(function(req,res,next){
   res.header('Access-Control-Allow-Origin','*');
   next()
 })
-
 app.post('/login',function(req,res){
+  //登录
   // res.set('charset','utf-8')
   console.log('login');
-  db('insert', req.body)
+  db('search', req.body)
   res.end('yes')
 })
 
+app.post('/register',function(req,res){
+  //注册
+  // res.set('charset','utf-8')
+  console.log('register');
+  db('insert', req.body)
+  res.end('yes')
+})
 app.listen(3000)

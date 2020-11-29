@@ -29,7 +29,7 @@
         </div>
       </div>
       <div>
-        <!-- 忘记密码，待添加 -->
+        <a href="javascript:void(0);"  @click="register"> 注册 </a>
       </div>
       <div class="login-btn">
         <el-button type="primary" @click="loginBtn">登录</el-button>
@@ -41,6 +41,7 @@
 <script>
 import request from "../../request/ajax";
 export default {
+  name: 'Login',
   data() {
     return {
       userData: {
@@ -57,6 +58,14 @@ export default {
         this.$message.success("登录成功！")
         this.$router.push('home')
       }
+    },
+    async register() {
+      this.$router.push('home')
+      // const res = await request("register", this.userData);
+      // if(res === 'yes'){
+      //   this.$message.success("注册成功！")
+      //   this.$router.push('home')
+      // }
     },
   },
   mounted() {},

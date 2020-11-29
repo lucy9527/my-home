@@ -8,7 +8,7 @@
 import baseUrl from './config'
 var ajax = new XMLHttpRequest()
 function request(type,params){
-  ajax.open('post',baseUrl+'login',true)
+  ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   ajax.send('username='+params.username+'&password='+params.password)
   return new Promise((resolve,reject)=>{

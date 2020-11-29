@@ -14,7 +14,7 @@ var count = 3
 function dbOptions(op , data){
   switch (op) {
     case 'search':
-      db.query("SELECT * FROM userdata",function(err,data){
+      db.query("SELECT * FROM userdata WHERE user",function(err,data){
         if(err){
           console.log("数据库访问出错",err);
         }else{
