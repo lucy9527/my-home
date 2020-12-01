@@ -1,8 +1,8 @@
 /*
- * @Description: 首页
+ * @Description: 前端路由控制
  * @Author: Do not edit
  * @Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-11-26 19:30:34
+ * @LastEditTime: 2020-11-30 18:18:16
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -12,7 +12,8 @@ import home from '../view/home/home.vue'
 import myArticle from '../view/article/myArticle.vue'
 import game from '../view/game'
 import edit from '../view/blog-edit/edit'
-
+import content from '../view/blog-content'
+import editor from '../components/editor.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,7 +44,15 @@ const routes = [
   {
     path: "/edit",
     name : 'edit',
-    component : edit  },    
+    component : edit  },   
+  {
+    path: "/content",
+    name : 'content',
+    component : content  }, 
+  {
+    path: "/editor",
+    name : 'editor',
+    component : editor  },  
 ]
 
 const router = new VueRouter({routes})

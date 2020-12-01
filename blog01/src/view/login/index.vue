@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:25:40
- * @LastEditTime: 2020-11-26 21:05:14
+ * @LastEditTime: 2020-12-01 09:38:48
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div>
-        <a href="javascript:void(0);"  @click="register"> 注册 </a>
+        <a href="javascript:void(0);" @click="register"> 注册 </a>
       </div>
       <div class="login-btn">
         <el-button type="primary" @click="loginBtn">登录</el-button>
@@ -41,7 +41,7 @@
 <script>
 import request from "../../request/ajax";
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       userData: {
@@ -51,21 +51,40 @@ export default {
     };
   },
   methods: {
+    isEmpty() {
+      if (this.userData.username.trim() == "") {
+        this.$message.error("用户名不能为空");
+        return false;
+      }
+      if (this.userData.password.trim() == "") {
+        this.$message.error("密码不能为空");
+        return false;
+      }
+      return true;
+    },
     async loginBtn() {
-      const res = await request("login", this.userData);
-      console.log("res", res);
-      if(res === 'yes'){
-        this.$message.success("登录成功！")
-        this.$router.push('home')
+      if (this.isEmpty()) {
+        const res = await request("login", this.userData);
+        console.log("res", res);
+        if (res === "yes") {
+          this.$message.success("登录成功！");
+          this.$router.push("home");
+        } else {
+          this.$message.error("登录失败！用户名或密码错误");
+        }
       }
     },
     async register() {
-      this.$router.push('home')
-      // const res = await request("register", this.userData);
-      // if(res === 'yes'){
-      //   this.$message.success("注册成功！")
-      //   this.$router.push('home')
-      // }
+      if (this.isEmpty()) {
+        const res = await request("register", this.userData);
+        console.log(res);
+        if (res === "yes") {
+          this.$message.success("注册成功！");
+          this.$router.push("home");
+        } else {
+          this.$message.error("注册失败！用户名已存在");
+        }
+      }
     },
   },
   mounted() {},

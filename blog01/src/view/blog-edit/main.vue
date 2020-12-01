@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Do not edit
+ * @Date: 2020-11-30 08:40:53
+ * @LastEditTime: 2020-11-30 18:21:23
+ * @LastEditors: HongXuan.Lu
+-->
 <template>
   <div class="edit-box">
     <div class="edit-zone">
@@ -6,7 +13,7 @@
           <el-input v-model="article.title"></el-input>
         </el-form-item>
         <el-form-item label="文章内容:">
-          <el-input type="textarea" v-model="article.content"></el-input>
+          <el-button type="primary" @click="goTo('editor')">编辑</el-button>
         </el-form-item>
         <el-form-item label="插入视频:">
           <el-input v-model="article.video"></el-input>
@@ -25,33 +32,37 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      article:{
-        title:"",
-        content:"",
-        video:"",
-        picture:""
-      }
-    }
+      article: {
+        title: "",
+        content: "",
+        video: "",
+        picture: "",
+      },
+    };
   },
-  methods:{
-    onSubmit(){
-      alert('提交')
-    }
-  }
-}
+  methods: {
+    onSubmit() {
+      alert("提交");
+    },
+    goTo(type) {
+      console.log(type);
+      this.$router.push(type);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-.edit-box{
+.edit-box {
   width: 100%;
-  display: flex;  
+  display: flex;
   justify-content: space-around;
-  .edit-zone{
+  .edit-zone {
     border: 1px solid yellow;
     width: 60%;
-    padding:{
+    padding: {
       left: 10px;
       top: 10px;
       right: 10px;
