@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-11-25 10:25:44
+ * @LastEditTime: 2020-12-01 16:40:46
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -18,16 +18,16 @@ export default {
     // console.log(this.$route);
   },
   watch: {
-    $route(to) {
-      // 对路由变化作出响应...
-      console.log(to);
-    },
+    // $route(to) {
+    //   // 对路由变化作出响应...
+    //   // console.log(to);
+    // },
   },
 };
 </script>
 
 <style lang="scss">
-@import './assets/scss/common.scss';
+@import "./assets/scss/common.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

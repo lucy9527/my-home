@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-11-30 18:21:23
+ * @LastEditTime: 2020-12-01 17:18:14
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -15,8 +15,14 @@
         <el-form-item label="文章内容:">
           <el-button type="primary" @click="goTo('editor')">编辑</el-button>
         </el-form-item>
-        <el-form-item label="插入视频:">
-          <el-input v-model="article.video"></el-input>
+        <el-form-item label="插入视频:" @click="click">
+          <input
+            id="videobtn"
+            type="file"
+            value="Click me"
+            accept="image/*"
+            capture="user"
+          />
         </el-form-item>
         <el-form-item label="展示图片:">
           <el-input v-model="article.picture"></el-input>
@@ -37,19 +43,22 @@ export default {
       article: {
         title: "",
         content: "",
-        video: "",
+        // video: "",
         picture: "",
       },
     };
   },
   methods: {
     onSubmit() {
-      alert("提交");
+      var input = document.getElementById("videobtn");
+      console.log(input);
+      console.log(input.select());
+      // alert("提交");
     },
     goTo(type) {
-      console.log(type);
       this.$router.push(type);
     },
+    click() {},
   },
 };
 </script>
