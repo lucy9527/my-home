@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-01 17:29:47
+ * @LastEditTime: 2020-12-02 19:54:43
  * @LastEditors: HongXuan.Lu
 -->
 <!DOCTYPE html>
@@ -18,35 +18,38 @@
 </body>
 <script>
   var input = document.getElementById("input")
-  document.getElementById("input").addEventListener("focus", function () {
-    console.log("focus");
-  });
-
-  document.getElementById("input").addEventListener("mousedown", function () {
-    console.log("mousedown");
-  });
-
-  document.getElementById("input").addEventListener("mouseup", function () {
-    console.log("mouseup");
-  });
-
-  document.getElementById("input").addEventListener("input", function () {
-    console.log("input");
-  });
-
-  document.getElementById("input").addEventListener("change", function (data) {
-    console.log("change", input.value);
-  });
-
-  document.getElementById("input").addEventListener("blur", function () {
-    console.log("blur");
-  });
-
-  document.getElementById("input").addEventListener("click", function () {
-    console.log("click");
-  });
-
-
+  input.addEventListener('change', () => {
+    console.log(input.files)
+    const reader = new FileReader()
+    reader.readAsDataURL(input.files[0]) // input.files[0]为第一个文件
+    console.log(input.files, reader)
+    reader.onload = () => {
+      const img = new Image()
+      img.src = reader.result
+      document.body.appendChild(img)  // reader.result为获取结果
+    }
+  }, false)
+  // document.getElementById("input").addEventListener("focus", function () {
+  //   console.log("focus");
+  // });
+  // document.getElementById("input").addEventListener("mousedown", function () {
+  //   console.log("mousedown");
+  // });
+  // document.getElementById("input").addEventListener("mouseup", function () {
+  //   console.log("mouseup");
+  // });
+  // document.getElementById("input").addEventListener("input", function () {
+  //   console.log("input");
+  // });
+  // document.getElementById("input").addEventListener("change", function (data) {
+  //   console.log("change", input.files);
+  // });
+  // document.getElementById("input").addEventListener("blur", function () {
+  //   console.log("blur");
+  // });
+  // document.getElementById("input").addEventListener("click", function () {
+  //   console.log("click");
+  // });
 </script>
 
 </html>
