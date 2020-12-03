@@ -2,7 +2,7 @@
  * @Description: 入口文件
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-11-30 14:33:44
+ * @LastEditTime: 2020-12-03 15:13:54
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -13,7 +13,8 @@ import elementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
- 
+import store from './store'
+
 Vue.use(elementUI);
 Vue.use(mavonEditor);
 
@@ -21,6 +22,7 @@ Vue.use(mavonEditor);
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

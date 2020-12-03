@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:25:40
- * @LastEditTime: 2020-12-03 09:12:12
+ * @LastEditTime: 2020-12-03 20:14:00
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import request from "../../request/ajax";
+import { request } from "@/request/ajax";
 export default {
   name: "Login",
   data() {
@@ -63,9 +63,9 @@ export default {
       return true;
     },
     //-----------存储用户登录信息-------------
-    storeUser(username, password) {
-      sessionStorage.setItem("username", username);
-      sessionStorage.setItem("password", password);
+    storeUser(userData) {
+      sessionStorage.setItem("username", userData.username);
+      sessionStorage.setItem("password", userData.password);
     },
     async loginBtn() {
       if (this.isEmpty()) {
@@ -74,7 +74,7 @@ export default {
         if (res === "yes") {
           this.$message.success("登录成功！");
           this.$router.push("home");
-          this.storeUser(this.username, this.password);
+          this.storeUser(this.userData);
         } else {
           this.$message.error("登录失败！用户名或密码错误");
         }

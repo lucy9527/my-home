@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 14:35:16
- * @LastEditTime: 2020-12-02 21:57:19
+ * @LastEditTime: 2020-12-03 15:34:56
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -34,11 +34,14 @@ export default {
   methods: {
     save(value, render) {
       // 两个都是String类型
-      console.log(value, "///////////////", typeof render);
+      this.$store.commit("blogedit/setcontent", render);
     },
     goTo() {
       this.$router.push("edit");
     },
+  },
+  mounted() {
+    this.value = this.$store.getters["blogedit/content"];
   },
 };
 </script>

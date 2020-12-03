@@ -11,6 +11,11 @@
       right: 10px;
       bottom: 10px;
     }
+    .title {
+      .el-input {
+        width: 60%;
+      }
+    }
     .img-filter {
       height: 200px;
       display: flex;
