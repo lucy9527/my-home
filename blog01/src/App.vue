@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-12-01 16:40:46
+ * @LastEditTime: 2020-12-03 09:23:58
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -14,14 +14,14 @@
 <script>
 export default {
   name: "App",
-  mounted() {
-    // console.log(this.$route);
-  },
+  mounted() {},
   watch: {
-    // $route(to) {
-    //   // 对路由变化作出响应...
-    //   // console.log(to);
-    // },
+    //---------------监听路由---------------
+    $route() {
+      if (!sessionStorage.getItem("username")) {
+        this.$router.push("/login");
+      }
+    },
   },
 };
 </script>

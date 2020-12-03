@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:25:40
- * @LastEditTime: 2020-12-01 09:38:48
+ * @LastEditTime: 2020-12-03 09:12:12
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -62,6 +62,11 @@ export default {
       }
       return true;
     },
+    //-----------存储用户登录信息-------------
+    storeUser(username, password) {
+      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("password", password);
+    },
     async loginBtn() {
       if (this.isEmpty()) {
         const res = await request("login", this.userData);
@@ -69,6 +74,7 @@ export default {
         if (res === "yes") {
           this.$message.success("登录成功！");
           this.$router.push("home");
+          this.storeUser(this.username, this.password);
         } else {
           this.$message.error("登录失败！用户名或密码错误");
         }
@@ -81,6 +87,7 @@ export default {
         if (res === "yes") {
           this.$message.success("注册成功！");
           this.$router.push("home");
+          this.storeUser(this.username, this.password);
         } else {
           this.$message.error("注册失败！用户名已存在");
         }

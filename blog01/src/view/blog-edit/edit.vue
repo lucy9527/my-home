@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-02 21:41:30
+ * @LastEditTime: 2020-12-03 09:16:50
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -14,7 +14,7 @@
 
 <script>
 import headVue from "../../components/common/header";
-import mainVue from "./main";
+import mainVue from "./main.vue";
 
 export default {
   components: {

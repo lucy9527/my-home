@@ -2,7 +2,7 @@
  * @Description: 前端路由控制
  * @Author: Do not edit
  * @Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-11-30 18:18:16
+ * @LastEditTime: 2020-12-03 09:20:52
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
