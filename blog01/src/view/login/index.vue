@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:25:40
- * @LastEditTime: 2020-12-03 20:14:00
+ * @LastEditTime: 2020-12-04 12:55:37
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -70,7 +70,6 @@ export default {
     async loginBtn() {
       if (this.isEmpty()) {
         const res = await request("login", this.userData);
-        console.log("res", res);
         if (res === "yes") {
           this.$message.success("登录成功！");
           this.$router.push("home");

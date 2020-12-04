@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-03 20:23:10
+ * @LastEditTime: 2020-12-04 13:22:34
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -21,7 +21,10 @@ function queryData(sql,type){
       }else{
         switch (type){
           case 'search':
-            resolve(data.length ? 'yes' : 'no');
+            
+            // var dataString = JSON.stringify(data);
+            // data = JSON.parse(dataString);
+            resolve(data);
             break;
           case 'insert' : 
             resolve(data.length ? 'yes' : 'no');
@@ -35,7 +38,8 @@ function dbOptions(op , data ,resolve){
   var ret = ""
   switch (op) {
     case 'search':
-      var sql = 'SELECT * FROM `userdata` WHERE `username` = "' + data.username+'"'
+      // var sql = 'SELECT * FROM `article` WHERE `username` = "' + data.username+'"'
+      var sql = 'SELECT * FROM `article`'
       queryData(sql,'search').then(data=>resolve(data))
       break;
     case 'insert':

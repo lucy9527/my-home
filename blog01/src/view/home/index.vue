@@ -2,7 +2,7 @@
  * @Description: 首页--所有博客
  * @Author: Do not edit
  * @Date: 2020-11-19 15:19:04
- * @LastEditTime: 2020-11-30 13:20:28
+ * @LastEditTime: 2020-12-04 12:40:23
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import headerVue from "../../components/common/header";
-import mainVue from "../../components/home/blog";
+import headerVue from "@/components/common/header";
+import mainVue from "@/components/home/blog";
 export default {
   components: {
     headerVue,

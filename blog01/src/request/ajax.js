@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-03 20:10:09
+ * @LastEditTime: 2020-12-04 13:11:40
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -41,6 +41,25 @@ function pubData(type,bodyData){
   })
 }
 
+function reqA(type){
+  console.log(type);
+  ajax.open('post',baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  ajax.send()
+  return new Promise((resolve,reject)=>{
+    try{   
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+          resolve(ajax.responseText);
+        }
+      }
+    }catch(err){
+      reject(err)
+    }
+  })
+}
 export const request = login;
 export const publish = pubData;
+export const reqData = reqA;
+
 

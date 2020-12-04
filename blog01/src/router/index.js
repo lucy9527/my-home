@@ -2,13 +2,13 @@
  * @Description: 前端路由控制
  * @Author: Do not edit
  * @Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-12-03 18:32:58
+ * @LastEditTime: 2020-12-04 12:40:09
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '@/view/login/index.vue'
-import home from '@/view/home/home.vue'
+import home from '@/view/home'
 import myArticle from '@/view/article/myArticle.vue'
 import game from '@/view/game'
 import edit from '@/view/blog-edit'

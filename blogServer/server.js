@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-03 20:16:59
+ * @LastEditTime: 2020-12-04 13:25:09
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
@@ -38,21 +38,26 @@ app.post('/login',function(req,res){
 })
 
 app.post('/register',function(req,res){
-  //注册
-  // res.set('charset','utf-8')
   console.log('register');
   new Promise(function(resolve,reject){
     dbUser('insert', req.body ,resolve)
   }).then(data=>res.end(data))
 })
 
-app.post('/article',function(req,res){
-  //注册
-  // res.set('charset','utf-8')
-  console.log('article');
+app.post('/edit',function(req,res){
+  console.log('edit');
   console.log(req.body);
   new Promise(function(resolve,reject){
     dbArticle('insert', req.body ,resolve)
   }).then(data=>res.end(data))
 })
+
+app.post('/allpaper',function(req,res){
+  console.log('allpaper');
+  new Promise(function(resolve,reject){
+    dbArticle('search', req.body ,resolve)
+    // 数据乱码
+  }).then(data=>res.end(JSON.stringify(data)))
+})
+
 app.listen(3000)

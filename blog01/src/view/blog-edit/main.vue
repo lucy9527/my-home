@@ -91,7 +91,7 @@ export default {
     async publishData() {
       var data = this.$store.getters["blogedit/getall"];
       data.username = sessionStorage.getItem("username");
-      const res = await publish("article", data);
+      const res = await publish("edit", data);
       console.log(res);
     },
     onSubmit() {

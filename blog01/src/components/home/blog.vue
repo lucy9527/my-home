@@ -2,7 +2,7 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-11-30 13:22:45
+ * @LastEditTime: 2020-12-04 13:13:44
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -22,32 +22,25 @@
           </div>
         </div>
       </div>
-      <div class="blog-box">
-        <div class="blog-intro">
-          <div class="blog-name hand" @click="goTo('content')">vue</div>
-          <div class="blog-date">2020.01.02</div>
-        </div>
-        <div class="blog-part">
-          <div class="blog-img">
-            <img src="../../assets/images/vue.jpg" alt="" />
-          </div>
-          <div class="blog-content">
-            vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
-            被设计为可以自底向上逐层应用。Vue
-            的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+import {reqData} from '@/request/ajax'
 export default {
   methods: {
     goTo(type) {
       this.$router.push(type);
     },
+    async reqAarticle(){
+      const res = await reqData('allpaper')
+      console.log(res);
+    }
+  },
+  created() {
+    this.reqAarticle()
+    console.log(reqData);
   },
 };
 </script>
