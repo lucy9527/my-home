@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-03 11:09:36
- * @LastEditTime: 2020-12-03 18:42:05
+ * @LastEditTime: 2020-12-04 21:32:28
  * @LastEditors: HongXuan.Lu
  */
 const module = {
@@ -11,10 +11,7 @@ const module = {
     title:"",
     intro:"",
     content:"",
-    img1:"",
-    img2:"",
-    img3:"",
-    img4:""
+    img:"",
   },
   mutations: {
     setall(state,val){
@@ -33,18 +30,9 @@ const module = {
     setcontent(state, val) {
       state.content = val
     },
-    setimg1(state, newValue) {
-      state.img1 = newValue
+    setimg(state, newValue) {
+      state.img = newValue
     },
-    setimg2(state, newValue) {
-      state.img2 = newValue
-    },
-    setimg3(state, newValue) {
-      state.img3 = newValue
-    },
-    setimg4(state, newValue) {
-      state.img4 = newValue
-    }
   },
   getters: {
     getall(state){
@@ -60,17 +48,8 @@ const module = {
     content(state) {
       return state.content
     },
-    img1(state) {
-      return state.img1
-    },
-    img2(state) {
-      return state.img2
-    },
-    img3(state) {
-      return state.img3
-    },
-    img4(state) {
-      return state.img4
+    img(state) {
+      return state.img
     },
   },
   actions: {}

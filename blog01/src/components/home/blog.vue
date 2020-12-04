@@ -2,23 +2,30 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-04 13:13:44
+ * @LastEditTime: 2020-12-04 18:49:11
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="main">
     <div class="main-content">
-      <div class="blog-box">
+                  <img v-if="item.img1 !== ''" :src="img1" alt="#" />
+      <div class="blog-box" v-for="item in blogData" :key="item">
         <div class="blog-intro">
-          <div class="blog-name hand" @click="goTo('content')">百家讲坛</div>
+          <div class="blog-name hand" @click="goTo('content')">
+            <p>{{item.title}}</p>
+            <p>{{item.intro}}</p>
+          </div>
           <div class="blog-date">2020-1-12</div>
         </div>
         <div class="blog-part">
-          <div class="blog-img">
-            <img src="../../assets/images/bjjt.jpg" alt="#" />
+          <div class="blog-img" >
+            <img v-if="item.img1 !== ''" :src="img1" alt="#" />
+            <!-- <img v-if="item.img2 !== ''" :src="item.img2" alt="#" />
+            <img v-if="item.img3 !== ''" :src="item.img3" alt="#" />
+            <img v-if="item.img4 !== ''" :src="item.img4" alt="#" /> -->
           </div>
           <div class="blog-content">
-            三国演义:诉说了东汉末年的群雄割据混战和魏、蜀、吴三国之间的政治和军事斗争，最终司马炎一统三国，建立晋朝的故事
+            <p>{{item.content}}</p>
           </div>
         </div>
       </div>
@@ -29,18 +36,24 @@
 <script>
 import {reqData} from '@/request/ajax'
 export default {
+  data() {
+    return {
+      blogData:'',
+      img1:""
+    }
+  },
   methods: {
     goTo(type) {
       this.$router.push(type);
     },
     async reqAarticle(){
       const res = await reqData('allpaper')
+      // this.blogData = res
       console.log(res);
     }
   },
-  created() {
+  mounted() {
     this.reqAarticle()
-    console.log(reqData);
   },
 };
 </script>

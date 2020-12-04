@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:25:40
- * @LastEditTime: 2020-12-04 12:55:37
+ * @LastEditTime: 2020-12-04 17:09:19
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -45,8 +45,8 @@ export default {
   data() {
     return {
       userData: {
-        username: "",
-        password: "",
+        username: "lhx",
+        password: "123456",
       },
     };
   },

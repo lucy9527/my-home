@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-03 20:11:35
+ * @LastEditTime: 2020-12-04 21:34:08
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -18,32 +18,11 @@
         <el-form-item label="文章内容:">
           <el-button type="primary" @click="goTo('editor')">编辑</el-button>
         </el-form-item>
-        <!-- <el-form-item label="插入视频:" @click="click">
-          <input
-            id="videobtn"
-            type="file"
-            value="Click me"
-            accept="image/*"
-            capture="user"
-          />
-        </el-form-item> -->
-        <el-form-item label="选择图片:">
+        <el-form-item label="上传封面:">
           <div class="img-filter">
             <div class="img-box">
-              <img :src="article.img1" alt="暂无" />
-              <input type="file" @click="clicked('img1')" @change="change" />
-            </div>
-            <div class="img-box">
-              <img :src="article.img2" alt="暂无" />
-              <input type="file" @click="clicked('img2')" @change="change" />
-            </div>
-            <div class="img-box">
-              <img :src="article.img3" alt="暂无" />
-              <input type="file" @click="clicked('img3')" @change="change" />
-            </div>
-            <div class="img-box">
-              <img :src="article.img4" alt="暂无" />
-              <input type="file" @click="clicked('img4')" @change="change" />
+              <img :src="article.img" alt="暂无" />
+              <input type="file" @click="clicked('img')" @change="change" />
             </div>
           </div>
           <!-- <el-input v-model="article.picture"></el-input> -->
@@ -66,10 +45,7 @@ export default {
         title: "",
         intro: "",
         content: "",
-        img1: "",
-        img2: "",
-        img3: "",
-        img4: "",
+        img: "",
       },
       curclick: "",
     };
@@ -90,9 +66,8 @@ export default {
     // ----------------上传文章信息-------------------------
     async publishData() {
       var data = this.$store.getters["blogedit/getall"];
-      data.username = sessionStorage.getItem("username");
-      const res = await publish("edit", data);
-      console.log(res);
+      data.username = sessionStorage.getItem("username")
+      await publish("edit", data);
     },
     onSubmit() {
       this.$store.commit("blogedit/setall", this.article);

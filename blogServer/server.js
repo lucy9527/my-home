@@ -2,12 +2,13 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-04 13:25:09
+ * @LastEditTime: 2020-12-04 21:45:54
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
 const app =  express();
 const bodyParser = require('body-parser')
+const dealImg = require('./dealImg')
 //---------------数据库--------------------
 const dbUser = require('./dbUser.js')
 const dbArticle = require('./dbArticle.js')
@@ -46,9 +47,11 @@ app.post('/register',function(req,res){
 
 app.post('/edit',function(req,res){
   console.log('edit');
-  console.log(req.body);
+  var id = dealImg(req.body.img)
+  var reqData = req.body
+  reqData.articleId = id
   new Promise(function(resolve,reject){
-    dbArticle('insert', req.body ,resolve)
+    dbArticle('insert', reqData ,resolve)
   }).then(data=>res.end(data))
 })
 
@@ -56,8 +59,12 @@ app.post('/allpaper',function(req,res){
   console.log('allpaper');
   new Promise(function(resolve,reject){
     dbArticle('search', req.body ,resolve)
-    // 数据乱码
-  }).then(data=>res.end(JSON.stringify(data)))
+    //网络只能传输字符串或buffer二进制流，所以客园先处理成json字符串
+  }).then(data=>{console.log(data,'??????///');
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    console.log(data);
+    data.img = ''
+    res.end(data)})
 })
 
 app.listen(3000)

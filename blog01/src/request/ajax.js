@@ -2,12 +2,14 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-04 13:11:40
+ * @LastEditTime: 2020-12-04 15:36:53
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
 var ajax = new XMLHttpRequest()
-function login(type,params){
+
+//--------------------用户登录----------------------------
+function logOrReg(type,params){
   ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   ajax.send('username='+params.username+'&password='+params.password)
@@ -23,13 +25,13 @@ function login(type,params){
     }
   })
 }
-
-function pubData(type,bodyData){
+//---------------------创建博客-----------------------------
+function createBlog(type,bodyData){
   ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/json');
   ajax.send(JSON.stringify(bodyData))
   return new Promise((resolve,reject)=>{
-    try{   
+    try{
       ajax.onreadystatechange = function(){
         if(ajax.readyState == 4 && ajax.status == 200){
           resolve(ajax.responseText);
@@ -40,9 +42,8 @@ function pubData(type,bodyData){
     }
   })
 }
-
-function reqA(type){
-  console.log(type);
+//---------------------获取文章------------------------
+function getBlog(type){
   ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   ajax.send()
@@ -58,8 +59,8 @@ function reqA(type){
     }
   })
 }
-export const request = login;
-export const publish = pubData;
-export const reqData = reqA;
+export const request = logOrReg;
+export const publish = createBlog;
+export const reqData = getBlog;
 
 
