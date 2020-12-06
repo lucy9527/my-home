@@ -2,22 +2,23 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-04 21:45:54
+ * @LastEditTime: 2020-12-06 00:19:23
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
 const app =  express();
 const bodyParser = require('body-parser')
-const dealImg = require('./dealImg')
+const fs = require('fs')
+const {dealImg,readDict} = require('./dealImg')
 //---------------数据库--------------------
 const dbUser = require('./dbUser.js')
 const dbArticle = require('./dbArticle.js')
 //------------------处理所有请求-------------------------
 // 解析body
 // parse application/json  
-app.use(bodyParser.json({limit:'2mb'}));
+app.use(bodyParser.json({limit:'2100000kb'}));
 // parse application/x-www-form-urlencoded  
-app.use(bodyParser.urlencoded({limit:'5mb',extended:false}));
+app.use(bodyParser.urlencoded({limit:'2100000kb',extended:false}));
 
 app.use(function(req,res,next){
   res.header('Access-Control-Allow-Origin','*');
@@ -60,11 +61,14 @@ app.post('/allpaper',function(req,res){
   new Promise(function(resolve,reject){
     dbArticle('search', req.body ,resolve)
     //网络只能传输字符串或buffer二进制流，所以客园先处理成json字符串
-  }).then(data=>{console.log(data,'??????///');
+  }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    // Array 的type 为object
+    // var img = readDict()
+    data.push({'img':readDict()})
     console.log(data);
-    data.img = ''
-    res.end(data)})
+    res.send(data)
+    res.end()})
 })
 
 app.listen(3000)

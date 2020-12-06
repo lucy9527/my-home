@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-04 21:34:08
+ * @LastEditTime: 2020-12-06 10:51:22
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -56,7 +56,6 @@ export default {
       this.curclick = type;
     },
     change(e) {
-      // console.log(e.target.files);
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
@@ -66,7 +65,7 @@ export default {
     // ----------------上传文章信息-------------------------
     async publishData() {
       var data = this.$store.getters["blogedit/getall"];
-      data.username = sessionStorage.getItem("username")
+      data.username = sessionStorage.getItem("username");
       await publish("edit", data);
     },
     onSubmit() {

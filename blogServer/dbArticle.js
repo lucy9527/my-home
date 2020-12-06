@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-04 21:49:45
+ * @LastEditTime: 2020-12-05 00:50:12
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -22,8 +22,8 @@ function queryData(sql,type){
         switch (type){
           case 'search':
             var dataString = JSON.stringify(data);
-            // data = JSON.parse(dataString);
-            resolve(dataString);
+            data = JSON.parse(dataString);
+            resolve(data);
             break;
           case 'insert' : 
             resolve(data.length ? 'yes' : 'no');
@@ -42,7 +42,7 @@ function dbOptions(op , data ,resolve){
       queryData(sql,'search').then(data=>resolve(data))
       break;
     case 'insert':
-      sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}')`
+      sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.comment || ""}')`
       queryData(sql,'insert').then(userData=>
         {
           resolve(userData? 'no' : 'yes')

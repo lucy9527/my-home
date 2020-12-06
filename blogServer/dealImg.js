@@ -2,40 +2,36 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-04 20:05:03
- * @LastEditTime: 2020-12-04 22:04:52
+ * @LastEditTime: 2020-12-06 10:45:42
  * @LastEditors: HongXuan.Lu
  */
+const { json } = require('express');
 const fs = require('fs')
 const path = require("path");
 
 function getId(){
   var id = Math.floor(Math.random()*2147483646);
-  fs.mkdirSync('./images/'+id) //node创建目录
+  // fs.mkdirSync('./images/'+id) //node创建目录
   // 可以加上username表示个人的数据
   return id;
 }
+//存储图片
 function dealImg(imgData){
-  var articleId = getId()
-  fs.writeFileSync('images/'+articleId+'.txt',imgData)
+  var articleId = getId() //判断是否有图片数据
+  if(imgData.length > 0 ) fs.writeFileSync('images/'+articleId+'.txt',imgData)
   return articleId
 }
-function readDir(){
-  var fs = require("fs");
-  var dirs = [];
-  var pathName = "E:/test";
-  fs.readdir(pathName, function(err, files){
-      for (var i=0; i<files.length; i++)
-      {
-        fs.stat(path.join(pathName, files[i]), function(err, data){     
-              if(data.isFile())
-              {               
-                  dirs.push(files[i]);
-              }
-          });
-      } 
-      console.log(dirs);  
-  });
+
+function readDict(){
+  var dict = {};
+  var files = fs.readdirSync('./images') 
+  for (var i=0; i<files.length; i++)
+    {
+      var key = files[i].split('.')[0]
+      dict[key] = Buffer.from(JSON.parse(JSON.stringify(fs.readFileSync('images/'+files[i]))))      
+    } 
+  return dict ; 
 }
 
-module.exports = dealImg;
+module.exports = {dealImg,readDict};
 // exports.dealImg = {dealImg};

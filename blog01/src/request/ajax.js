@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-04 15:36:53
+ * @LastEditTime: 2020-12-05 23:58:44
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -43,7 +43,7 @@ function createBlog(type,bodyData){
   })
 }
 //---------------------获取文章------------------------
-function getBlog(type){
+function getBlogs(type){
   ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   ajax.send()
@@ -51,7 +51,7 @@ function getBlog(type){
     try{   
       ajax.onreadystatechange = function(){
         if(ajax.readyState == 4 && ajax.status == 200){
-          resolve(ajax.responseText);
+          setTimeout(resolve(JSON.parse(ajax.responseText)),1000)
         }
       }
     }catch(err){
@@ -61,6 +61,6 @@ function getBlog(type){
 }
 export const request = logOrReg;
 export const publish = createBlog;
-export const reqData = getBlog;
+export const getBlog = getBlogs;
 
 
