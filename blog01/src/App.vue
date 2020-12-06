@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-12-03 09:23:58
+ * @LastEditTime: 2020-12-06 13:30:00
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -47,7 +47,7 @@ export default {
   bottom: 0;
   opacity: 0.3;
   z-index: -1;
-  background: url("./assets/warhaven.jpg") no-repeat;
+  background: url("./assets/warhaven.jpg") repeat;
   background-size: 100%;
 }
 </style>

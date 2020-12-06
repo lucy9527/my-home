@@ -2,10 +2,10 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-03 11:09:36
- * @LastEditTime: 2020-12-04 21:32:28
+ * @LastEditTime: 2020-12-06 14:10:28
  * @LastEditors: HongXuan.Lu
  */
-const module = {
+const edit = {
   namespaced :true,
   state: {
     title:"",
@@ -55,4 +55,4 @@ const module = {
   actions: {}
 }
 
-export default module;
+export default edit;

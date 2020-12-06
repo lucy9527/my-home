@@ -1,12 +1,15 @@
-body{
+body {
   text-align: left;
 }
+* {
+  box-sizing: border-box;
+}
 
-@import './header.scss';
+@import "./header.scss";
 
 .hand {
   cursor: pointer;
-  &:hover{
-    color:purple;
+  &:hover {
+    color: purple;
   }
 }

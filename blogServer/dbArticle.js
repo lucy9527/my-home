@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-05 00:50:12
+ * @LastEditTime: 2020-12-07 00:02:31
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -19,10 +19,14 @@ function queryData(sql,type){
         console.log("数据库访问出错",err);
         reject(err)
       }else{
+        var dataString = JSON.stringify(data);
+        data = JSON.parse(dataString);
         switch (type){
-          case 'search':
-            var dataString = JSON.stringify(data);
-            data = JSON.parse(dataString);
+          case 'all':
+            resolve(data);
+            break;
+          case 'id':
+            console.log(data);
             resolve(data);
             break;
           case 'insert' : 
@@ -33,27 +37,33 @@ function queryData(sql,type){
     })
   })
 }
-function dbOptions(op , data ,resolve){
+function dbOptions(op , data,resolve){
   var ret = ""
   switch (op) {
-    case 'search':
+    case 'searchAll':
       // var sql = 'SELECT * FROM `article` WHERE `username` = "' + data.username+'"'
       var sql = 'SELECT * FROM `article`'
-      queryData(sql,'search').then(data=>resolve(data))
+      queryData(sql,'all').then(data=>resolve(data))
+      break;
+    case 'searchid':
+      var sql = `SELECT * FROM article where articleId = ${data}`
+      queryData(sql,'id').then(data=>resolve(data))
       break;
     case 'insert':
-      sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.comment || ""}')`
+      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.comment || ""}')`
       queryData(sql,'insert').then(userData=>
         {
           resolve(userData? 'no' : 'yes')
         })
       break;
     case 'update':
-      db.query("UPDATE userdata SET password = '321' WHERE userid = 2",function(err,data){
+      var arr = data.split('+')
+      var sql = `UPDATE article SET comment = '${data}' where articleId = '${arr[0]}'`
+      db.query(sql,function(err,data){
         if(err){
           console.log("数据库访问出错",err);
         }else{
-          console.log(data);
+          console.log(data,'update');
         }
       })
       break;

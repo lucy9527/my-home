@@ -1,49 +1,52 @@
-.main {
+.home-page {
   width: 100%;
   min-width: 1300px;
   display: flex;
   justify-content: space-around;
-  .main-content {
-    width: 60%;
+  .home-content {
+    width: 850px;
     border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+    justify-content: space-around;
     .blog-box {
-      height: 150px;
-      padding: 10px 20px;
-      .blog-intro {
-        display: flex;
-        height: 30px;
-        justify-content: space-between;
-        align-items: flex-end;
-        .blog-name {
-          font-size: 20px;
-          font-weight: 600;
-          line-height: 26px;
-          height: 26px;
-        }
-        .blog-date {
-          font-size: 14px;
-          font-weight: 300;
-          line-height: 20px;
-          height: 20px;
+      position: relative;
+      width: 210px;
+      height: 400px;
+      padding: 5px;
+      box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, 0.2);
+      margin-bottom: 50px;
+      .blog-img {
+        img {
+          width: 190px;
+          height: 270px;
         }
       }
-      .blog-part {
-        height: 120px;
-        display: flex;
-        justify-content: space-start;
-        padding: 5px 0;
-        img {
-          height: 100%;
-          width: 150px;
-          border-radius: 10px;
+      .blog-intro {
+        padding: 0 10px;
+        text-align: justify;
+        .intro {
+          width: 100%;
+          font-size: 14px;
+          text-indent: 1em;
+          line-height: 0;
         }
-        .blog-content {
-          text-align: justify;
-          padding: {
-            left: 20px;
-            top: 10px;
-            right: 0;
-            bottom: 20px;
+        .blog-title {
+          position: absolute;
+          bottom: 0;
+          width: 190px;
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          justify-content: space-around;
+          .title {
+            font-size: 20px;
+            font-weight: 600;
+            &:hover {
+              // 看能不能弄一个生成随机颜色
+              color: blueviolet;
+            }
           }
         }
       }

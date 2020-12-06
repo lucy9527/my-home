@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-06 00:19:23
+ * @LastEditTime: 2020-12-07 00:03:14
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
@@ -12,7 +12,8 @@ const fs = require('fs')
 const {dealImg,readDict} = require('./dealImg')
 //---------------数据库--------------------
 const dbUser = require('./dbUser.js')
-const dbArticle = require('./dbArticle.js')
+const dbArticle = require('./dbArticle.js');
+const { json } = require('express');
 //------------------处理所有请求-------------------------
 // 解析body
 // parse application/json  
@@ -57,17 +58,31 @@ app.post('/edit',function(req,res){
 })
 
 app.post('/allpaper',function(req,res){
-  console.log('allpaper');
   new Promise(function(resolve,reject){
-    dbArticle('search', req.body ,resolve)
+    dbArticle('searchAll', req.body ,resolve)
     //网络只能传输字符串或buffer二进制流，所以客园先处理成json字符串
   }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     // Array 的type 为object
-    // var img = readDict()
     data.push({'img':readDict()})
-    console.log(data);
     res.send(data)
+    res.end()})
+})
+app.post('/paper',function(req,res){
+  new Promise(function(resolve,reject){
+    dbArticle('searchid', req.body.articleId ,resolve)
+  }).then(data=>{
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send(data)
+    res.end()})
+})
+
+app.post('/myview',function(req,res){
+  // console.log('myview',req.body.data);
+  new Promise(function(resolve,reject){
+    dbArticle('update', req.body.data ,resolve)
+  }).then(data=>{
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.end()})
 })
 

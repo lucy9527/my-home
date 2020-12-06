@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-05 23:58:44
+ * @LastEditTime: 2020-12-06 23:55:21
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -43,10 +43,12 @@ function createBlog(type,bodyData){
   })
 }
 //---------------------获取文章------------------------
-function getBlogs(type){
-  ajax.open('post',baseUrl+type ,true)
-  ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-  ajax.send()
+function getBlogs(type,articleId){
+  ajax.open('post', baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/json');
+  var id = {}
+  id.articleId = articleId
+  ajax.send(JSON.stringify(id))
   return new Promise((resolve,reject)=>{
     try{   
       ajax.onreadystatechange = function(){
@@ -59,8 +61,30 @@ function getBlogs(type){
     }
   })
 }
+//------------------提交评论------------------------
+function subCom(type,bodyData){
+  var obj = {}
+  obj['data'] = bodyData
+  ajax.open('post',baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/json');
+  ajax.send(JSON.stringify(obj))
+  // ajax.send(bodyData)
+  return new Promise((resolve,reject)=>{
+    try{
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+          resolve(ajax.responseText);
+        }
+      }
+    }catch(err){
+      reject(err)
+    }
+  })
+}
 export const request = logOrReg;
 export const publish = createBlog;
 export const getBlog = getBlogs;
+export const subV = subCom;
+
 
 
