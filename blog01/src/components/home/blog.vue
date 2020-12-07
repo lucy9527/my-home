@@ -2,7 +2,7 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-06 18:17:31
+ * @LastEditTime: 2020-12-07 13:34:11
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -15,7 +15,9 @@
         <div class="blog-intro" @click="goTo('blog', item.articleId)">
           <p class="intro">{{ item.intro }}</p>
           <div class="blog-title">
-            <p class="title">{{ item.title }}</p>
+            <p :class="'color' + Math.floor(Math.random() * 5)" class="title">
+              {{ item.title }}
+            </p>
             <p class="date">2020-1-30</p>
             <p class="count">阅读量：{{ item.count }}</p>
           </div>
@@ -48,8 +50,8 @@ export default {
       const res = await getBlog("allpaper");
       this.imgData = res.pop().img;
       this.blogData = res;
-      this.$store.commit("allpaper/setpaper", this.blogData);
-      this.$store.commit("allpaper/setimg", this.imgData);
+      // this.$store.commit("allpaper/setpaper", this.blogData);
+      // this.$store.commit("allpaper/setimg", this.imgData);
       // this.testImg = Buffer.from(
       //   JSON.parse(JSON.stringify(this.imgData["1242630713"]))
       // );

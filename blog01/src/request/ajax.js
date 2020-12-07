@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-06 23:55:21
+ * @LastEditTime: 2020-12-07 17:13:01
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -61,6 +61,24 @@ function getBlogs(type,articleId){
     }
   })
 }
+function getUserBlogs(type,username){
+  ajax.open('post', baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/json');
+  var user = {}
+  user.username = username
+  ajax.send(JSON.stringify(user))
+  return new Promise((resolve,reject)=>{
+    try{   
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+          setTimeout(resolve(JSON.parse(ajax.responseText)),1000)
+        }
+      }
+    }catch(err){
+      reject(err)
+    }
+  })
+}
 //------------------提交评论------------------------
 function subCom(type,bodyData){
   var obj = {}
@@ -85,6 +103,7 @@ export const request = logOrReg;
 export const publish = createBlog;
 export const getBlog = getBlogs;
 export const subV = subCom;
+export const getUserBlog = getUserBlogs;
 
 
 

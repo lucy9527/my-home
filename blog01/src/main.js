@@ -2,12 +2,11 @@
  * @Description: 入口文件
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-12-03 15:13:54
+ * @LastEditTime: 2020-12-07 19:57:55
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
 import App from './App.vue'
-// 默认找文件下的index
 import router from './router'
 import elementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';

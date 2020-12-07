@@ -2,34 +2,32 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:22:59
- * @LastEditTime: 2020-11-25 20:23:13
+ * @LastEditTime: 2020-12-07 16:34:43
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="game-page">
-    <header-vue></header-vue>
+    <header-vue type="game"></header-vue>
     <main-vue></main-vue>
   </div>
 </template>
 
 <script>
-import headerVue from '../../components/common/header';
-import mainVue from './main'
+import headerVue from "@/components/common/header";
+import mainVue from "./main.vue";
 export default {
-  components:{
+  components: {
     headerVue,
-    mainVue
+    mainVue,
   },
-  data(){
-    return {
-
-    }
-  }
+  data() {
+    return {};
+  },
 };
 </script>
 
 <style>
-.game-page{
+.game-page {
   height: 100%;
 }
 </style>

@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-07 00:02:31
+ * @LastEditTime: 2020-12-07 17:26:03
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -26,7 +26,6 @@ function queryData(sql,type){
             resolve(data);
             break;
           case 'id':
-            console.log(data);
             resolve(data);
             break;
           case 'insert' : 
@@ -49,8 +48,12 @@ function dbOptions(op , data,resolve){
       var sql = `SELECT * FROM article where articleId = ${data}`
       queryData(sql,'id').then(data=>resolve(data))
       break;
+    case 'userpaper':
+      var sql = `SELECT * FROM article where username = '${data}'`
+      queryData(sql,'all').then(data=>resolve(data))
+      break;
     case 'insert':
-      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.comment || ""}')`
+      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.articleId}')` //初始化给comment赋值文章id
       queryData(sql,'insert').then(userData=>
         {
           resolve(userData? 'no' : 'yes')
@@ -63,7 +66,8 @@ function dbOptions(op , data,resolve){
         if(err){
           console.log("数据库访问出错",err);
         }else{
-          console.log(data,'update');
+          // 如果不写resolve，请求显示是pending，前端await后面的代码不会执行
+          resolve('yes');
         }
       })
       break;

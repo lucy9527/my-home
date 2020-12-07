@@ -1,11 +1,10 @@
+@import "./random.scss";
 body {
   text-align: left;
 }
 * {
   box-sizing: border-box;
 }
-
-@import "./header.scss";
 
 .hand {
   cursor: pointer;

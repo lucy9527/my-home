@@ -1,19 +1,19 @@
 /*
- * @Description: 前端路由控制
- * @Author: Do not edit
- * @Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-12-06 15:00:31
+ * .Description: 前端路由控制
+ * .Author: Do not edit
+ * .Date: 2020-11-19 14:34:18
+ * @LastEditTime: 2020-12-07 20:07:02
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import login from '@/view/login/index.vue'
-import home from '@/view/home'
-import myArticle from '@/view/article/myArticle.vue'
-import game from '@/view/game'
-import edit from '@/view/blog-edit'
-import blog from '@/view/blog-content'
-import editor from '@/components/editor.vue'
+import login from '../view/login/index.vue'
+import home from '../view/home/index.vue'
+import myArticle from '../view/article/myArticle.vue'
+import game from '../view/game/index.vue'
+import edit from '../view/blog-edit/index.vue'
+import blog from '../view/blog-content/index.vue'
+import editor from '../components/editor.vue'
 Vue.use(VueRouter)
 
 const routes = [

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-12-06 13:30:00
+ * @LastEditTime: 2020-12-07 10:06:43
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -35,19 +35,19 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-#app::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  opacity: 0.3;
-  z-index: -1;
-  background: url("./assets/warhaven.jpg") repeat;
-  background-size: 100%;
-}
+// #app::after {
+//   content: "";
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   right: 0;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+//   opacity: 0.3;
+//   z-index: -1;
+//   background: url("./assets/warhaven.jpg") repeat;
+//   background-size: 100%;
+// }
 </style>

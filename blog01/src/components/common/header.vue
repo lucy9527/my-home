@@ -1,5 +1,12 @@
+<!--
+ * @Description: 
+ * @Author: Do not edit
+ * @Date: 2020-11-30 08:40:53
+ * @LastEditTime: 2020-12-07 16:35:13
+ * @LastEditors: HongXuan.Lu
+-->
 <template>
-  <div class="header">
+  <div class="header" :class="type + 'bg'">
     <div class="left">
       <a @click="goTo('home')" class="hand">首页</a>
       <a @click="goTo('myArticle')" class="hand">我的博客</a>
@@ -13,18 +20,27 @@
 
 <script>
 export default {
+  props:['type'],
   name: "Header",
+  data() {
+    return {
+    };
+  },
   methods: {
     goTo(type) {
-      console.log("跳转");
+      console.log("跳转",type);
       this.$router.push(type);
     },
   },
+   created() {
+   },
 };
 </script>
 
-<style lang="scss">
-.clicked {
-  font-size: 15px;
+<style lang="scss" src="./header.scss" scoped>
+.header {
+  .clicked {
+    font-size: 15px;
+  }
 }
 </style>

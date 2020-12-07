@@ -1,0 +1,63 @@
+@mixin common {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: -1;
+    background-size: 100%;
+  }
+}
+@mixin flexRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header{
+  padding: {
+    left: 50px;
+  }
+  position: relative;
+  height: 50px;
+  @include flexRow;
+  .left , .mid , .right{
+    @include flexRow;
+  }
+  .left{
+    a{
+      padding-right: 10px;
+    }
+  }
+}
+.homebg {
+  @include common;
+  &::after {
+    background: url("../../assets/images/home.png") no-repeat;
+  }
+}
+
+.myArticlebg {
+  @include common;
+  &::after {
+    background: url("../../assets/images/myhome.jpg");
+  }
+}
+.gamebg {
+  @include common;
+  &::after {
+    background: url("../../assets/images/game.jpg");
+  }
+}
+.editbg {
+  @include common;
+  &::after {
+    background: url("../../assets/images/edit.jpg");
+  }
+}

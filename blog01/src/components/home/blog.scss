@@ -1,3 +1,6 @@
+@function randomN() {
+  @return floor(random() * 120+50);
+}
 .home-page {
   width: 100%;
   min-width: 1300px;
@@ -5,7 +8,7 @@
   justify-content: space-around;
   .home-content {
     width: 850px;
-    border: 1px solid blue;
+    border-left: 1px solid rgba($color: #380c0c, $alpha: 1);
     display: flex;
     flex-wrap: wrap;
     padding: 50px;
@@ -15,7 +18,7 @@
       width: 210px;
       height: 400px;
       padding: 5px;
-      box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, 0.2);
+      box-shadow: 0 0 10px #000;
       margin-bottom: 50px;
       .blog-img {
         img {
@@ -43,10 +46,6 @@
           .title {
             font-size: 20px;
             font-weight: 600;
-            &:hover {
-              // 看能不能弄一个生成随机颜色
-              color: blueviolet;
-            }
           }
         }
       }

@@ -2,12 +2,12 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-03 17:59:26
+ * @LastEditTime: 2020-12-07 16:35:04
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="edit-page">
-    <head-vue></head-vue>
+    <head-vue type="edit"></head-vue>
     <main-vue></main-vue>
   </div>
 </template>

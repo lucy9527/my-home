@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-07 00:03:14
+ * @LastEditTime: 2020-12-07 17:27:33
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
@@ -68,6 +68,8 @@ app.post('/allpaper',function(req,res){
     res.send(data)
     res.end()})
 })
+
+//-------------------id获取单篇文章------------------------
 app.post('/paper',function(req,res){
   new Promise(function(resolve,reject){
     dbArticle('searchid', req.body.articleId ,resolve)
@@ -76,14 +78,22 @@ app.post('/paper',function(req,res){
     res.send(data)
     res.end()})
 })
-
-app.post('/myview',function(req,res){
-  // console.log('myview',req.body.data);
+// --------------------更新评论--------------------------
+app.post('/myview',function(req,res){  
   new Promise(function(resolve,reject){
     dbArticle('update', req.body.data ,resolve)
   }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.end()})
+    res.end(data)})
 })
 
+// -----------------------个人文章----------------------------
+app.post('/userpaper',function(req,res){  
+  console.log(req.body.username);
+  new Promise(function(resolve,reject){
+    dbArticle('userpaper', req.body.username ,resolve)
+  }).then(data=>{
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.end(JSON.stringify(data))})
+})
 app.listen(3000)

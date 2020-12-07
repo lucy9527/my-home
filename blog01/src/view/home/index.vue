@@ -2,12 +2,12 @@
  * @Description: 首页--所有博客
  * @Author: Do not edit
  * @Date: 2020-11-19 15:19:04
- * @LastEditTime: 2020-12-04 12:40:23
+ * @LastEditTime: 2020-12-07 16:34:24
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="home">
-    <header-vue></header-vue>
+    <header-vue type="home"></header-vue>
     <main-vue></main-vue>
   </div>
 </template>

@@ -2,13 +2,16 @@
  * @Description: webpack配置文件
  * @Author: Do not edit
  * @Date: 2020-11-19 11:29:16
- * @LastEditTime: 2020-11-20 16:50:23
+ * @LastEditTime: 2020-12-07 20:40:37
  * @LastEditors: HongXuan.Lu
  */
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-console.log('执行webpack');
+function resolve (dir) {
+  return path.join(__dirname, '/', dir)
+}
+
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -27,6 +30,14 @@ module.exports = {
         use: 'babel-loader',
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: 'file-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: 'file-loader',
+      },
+      {
         test: /\.css$/,
         use:[
         {loader : 'style-loader'},
@@ -42,25 +53,18 @@ module.exports = {
           {loader : 'sass-loader'}
         ]
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        use: 'file-loader',
-      },
     ]
   },
   plugins:[
     new VueLoaderPlugin()
   ],
   resolve:{
+    extensions: ['.js', '.vue'],
     alias :{
       // 起别名，import 时候可以直接使用别名
       // 不带$,只能import vue ,import vue/xxx.js error错误    带$,import vue/xxx.js会去node_modules/vue/xxx.js去找
       'vue$': 'vue/dist/vue.esm.js',
-      '~': 'src'
+      '@': resolve('src')
     }
   },
   devServer: {
