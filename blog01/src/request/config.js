@@ -5,6 +5,6 @@
  * @LastEditTime: 2020-11-26 12:53:45
  * @LastEditors: HongXuan.Lu
  */
-const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'http://101.201.145.236:3000/'
 
 export default baseUrl;

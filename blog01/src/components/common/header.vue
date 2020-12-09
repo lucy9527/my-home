@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-07 16:35:13
+ * @LastEditTime: 2020-12-08 12:13:06
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -37,10 +37,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./header.scss" scoped>
-.header {
-  .clicked {
-    font-size: 15px;
-  }
-}
-</style>
+<style lang="scss" src="./header.scss" scoped></style>

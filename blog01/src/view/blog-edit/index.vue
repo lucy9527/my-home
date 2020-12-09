@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import headVue from "@/components/common/header";
+import headVue from "@/components/common/header.vue";
 import mainVue from "./main.vue";
 
 export default {

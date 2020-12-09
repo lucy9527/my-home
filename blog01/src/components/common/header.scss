@@ -1,6 +1,6 @@
 @mixin common {
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 100%;
@@ -14,24 +14,26 @@
     background-size: 100%;
   }
 }
-@mixin flexRow{
+@mixin flexRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header{
+.header {
   padding: {
     left: 50px;
   }
   position: relative;
   height: 50px;
   @include flexRow;
-  .left , .mid , .right{
+  .left,
+  .mid,
+  .right {
     @include flexRow;
   }
-  .left{
-    a{
+  .left {
+    a {
       padding-right: 10px;
     }
   }
@@ -39,25 +41,25 @@
 .homebg {
   @include common;
   &::after {
-    background: url("../../assets/images/home.png") no-repeat;
+    background: url("./../../assets/images/home.jpg") no-repeat;
   }
 }
 
 .myArticlebg {
   @include common;
   &::after {
-    background: url("../../assets/images/myhome.jpg");
+    background: url("./../../assets/images/myhome.jpg");
   }
 }
 .gamebg {
   @include common;
   &::after {
-    background: url("../../assets/images/game.jpg");
+    background: url("./../../assets/images/game.jpg");
   }
 }
 .editbg {
   @include common;
   &::after {
-    background: url("../../assets/images/edit.jpg");
+    background: url("./../../assets/images/edit.jpg");
   }
 }

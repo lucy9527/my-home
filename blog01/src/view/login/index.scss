@@ -20,3 +20,43 @@
     line-height: 28px;
   }
 }
+
+.login-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include center;
+  .login-container {
+    width: 35%;
+    height: 30%;
+    border: 1px solid lightblue;
+    background-color: rgb(199, 237, 204);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .login-input {
+      @include center;
+      .input-box {
+        display: flex;
+        font-size: 13px !important;
+        line-height: 28px !important;
+        padding: 10px 10px 10px 0;
+        label {
+          width: 100px;
+        }
+        .el-input {
+          @include inputBox;
+        }
+      }
+    }
+    .login-btn {
+      .el-button {
+        span {
+          padding: 0 90px;
+        }
+      }
+    }
+  }
+}

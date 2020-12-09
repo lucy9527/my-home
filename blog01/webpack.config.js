@@ -2,11 +2,13 @@
  * @Description: webpack配置文件
  * @Author: Do not edit
  * @Date: 2020-11-19 11:29:16
- * @LastEditTime: 2020-12-07 20:40:37
+ * @LastEditTime: 2020-12-08 21:12:51
  * @LastEditors: HongXuan.Lu
  */
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '/', dir)
@@ -17,25 +19,21 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js' ,
-    publicPath: '/dist/'          // 公共资源文件夹
+    publicPath: './dist/'          // 公共资源文件夹
   },
   module:{
     rules:[
       {
         test: /\.vue$/,
-        use: 'vue-loader'
+        loader: 'vue-loader',
+        options:{
+          extractCSS:true
+        }
       },
       {
         test: /\.js$/,
         use: 'babel-loader',
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        use: 'file-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -46,20 +44,34 @@ module.exports = {
        },
       {
         test: /\.scss$/,
-        // 从下至上依次转换编译
-        use:[
-          {loader : 'vue-style-loader'},
-          {loader : 'css-loader'},
-          {loader : 'sass-loader'}
-        ]
+        use:['style-loader','css-loader','sass-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: 'url-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use:[{
+          loader: 'file-loader',
+          options:{
+            name:'[name].[ext]', 
+            // outputPath: '/images/'  //图片输出路径（将图片统一输出到一个文件夹中）
+        }
+        }]
       },
     ]
   },
   plugins:[
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash:4].css",
+      chunkFilename: "[id].[contenthash:4].css"
+    }),
+    new ExtractTextPlugin('/css/index.css'), 
   ],
   resolve:{
-    extensions: ['.js', '.vue'],
+    // extensions: ['.js', '.vue',], //列表里面多组文件出现后，以第一种为准
     alias :{
       // 起别名，import 时候可以直接使用别名
       // 不带$,只能import vue ,import vue/xxx.js error错误    带$,import vue/xxx.js会去node_modules/vue/xxx.js去找
