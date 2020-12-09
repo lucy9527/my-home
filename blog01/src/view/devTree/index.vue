@@ -2,18 +2,29 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-09 17:29:55
+ * @LastEditTime: 2020-12-09 20:32:41
  * @LastEditors: HongXuan.Lu
 -->
 <template>
 <div class="devtree-box">
   <header-vue type="devtree"></header-vue>
   <div class="devTree">
-    <div class="lifenode">
-      <!-- 随机宽度、随机颜色 -->
-      <div class="node__content">
-        <div class="node__time"></div>
-        <div class="node__text">第一次记录</div>
+    <div class="node-border">
+      <div class="lifenode">
+        <!-- 随机宽度、随机颜色 -->
+        <div class="node__content">
+          <div class="node__time"></div>
+          <div class="node__text">第一次记录</div>
+        </div>
+      </div>
+    </div>
+    <div class="node-border">
+      <div class="lifenode">
+        <!-- 随机宽度、随机颜色 -->
+        <div class="node__content">
+          <div class="node__time"></div>
+          <div class="node__text">第二次记录</div>
+        </div>
       </div>
     </div>
   </div>
@@ -22,7 +33,7 @@
 
 <script>
 import headerVue from "@/components/common/header.vue";
-import {dateFormat} from '../../utils/help.js'
+import {dateFormat}  from '../../utils/help.js'
 export default {
   components:{
     headerVue
@@ -41,7 +52,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.dateFormat('1111111111111'));
+    console.log(dateFormat('1111111111111'));
   },
 }
 </script>
