@@ -2,7 +2,7 @@
  * @Description: webpack配置文件
  * @Author: Do not edit
  * @Date: 2020-11-19 11:29:16
- * @LastEditTime: 2020-12-08 21:12:51
+ * @LastEditTime: 2020-12-09 13:31:40
  * @LastEditors: HongXuan.Lu
  */
 const path = require('path')
@@ -19,7 +19,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js' ,
-    publicPath: './dist/'          // 公共资源文件夹
+    publicPath: './dist/'          // 前面加了个点不知道有什么用，图片url可以使用
   },
   module:{
     rules:[
@@ -48,14 +48,14 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'url-loader'
+        use: 'url-loader'  //内置file-loader 
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         use:[{
           loader: 'file-loader',
           options:{
-            name:'[name].[ext]', 
+            name:'[name].[ext]',  // 图片名称不变
             // outputPath: '/images/'  //图片输出路径（将图片统一输出到一个文件夹中）
         }
         }]

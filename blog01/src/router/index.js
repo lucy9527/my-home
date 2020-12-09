@@ -2,18 +2,20 @@
  * .Description: 前端路由控制
  * .Author: Do not edit
  * .Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-12-07 20:07:02
+ * @LastEditTime: 2020-12-09 14:41:34
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '../view/login/index.vue'
 import home from '../view/home/index.vue'
-import myArticle from '../view/article/myArticle.vue'
+import myArticle from '../view/userArticles/myArticle.vue'
 import game from '../view/game/index.vue'
-import edit from '../view/blog-edit/index.vue'
-import blog from '../view/blog-content/index.vue'
+import edit from '../view/paperEdit/index.vue'
+import blog from '../view/paperContent/index.vue'
 import editor from '../components/editor.vue'
+import devtree from '../view/devTree'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -52,7 +54,11 @@ const routes = [
   {
     path: "/editor",
     name : 'editor',
-    component : editor  },  
+    component : editor  },
+  {
+    path: "/devtree",
+    name : 'devtree',
+    component : devtree  },   
 ]
 
 const router = new VueRouter({routes})

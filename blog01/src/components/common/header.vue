@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-08 12:13:06
+ * @LastEditTime: 2020-12-09 14:40:02
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -12,6 +12,7 @@
       <a @click="goTo('myArticle')" class="hand">我的博客</a>
       <a @click="goTo('game')" class="hand">游戏页面</a>
       <a @click="goTo('edit')" class="hand">博客编辑</a>
+      <a @click="goTo('devtree')" class="hand">树生活</a>
     </div>
     <div class="middle"></div>
     <div class="right"></div>
