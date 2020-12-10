@@ -1,0 +1,55 @@
+/*
+ * @Description: 
+ * @Author: Do not edit
+ * @Date: 2020-12-10 10:43:15
+ * @LastEditTime: 2020-12-10 14:55:18
+ * @LastEditors: HongXuan.Lu
+ */
+const colorOptions = [
+  {
+    label: "红色",
+    value: "red",
+  },
+  {
+    label: "蓝色",
+    value: "blue",
+  },
+  {
+    label: "浅绿",
+    value: "green",
+  },
+  {
+    label: "黄色",
+    value: "yellow",
+  },
+  {
+    label: "橘色",
+    value: "orange",
+  },
+]
+
+const formRule = {
+  name: [
+    { required: true, message: '请输入活动名称', trigger: 'blur' },
+    { min: 2, max: 5, message: '长度在 2 到 30 个字符', trigger: 'blur' }
+  ],
+  color: [
+    { required: true, message: '请选择一种背景颜色', trigger: 'change' }
+  ],
+  dateBegin: [
+    { type: 'date', required: true, message: '请选择开始时间', trigger: 'change' }
+  ],
+  dateEnd: [
+    { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
+  ],
+  label: [
+    { required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+  ],
+  content: [
+    { required: true, message: '请填写活动形式', trigger: 'blur' }
+  ]
+}
+
+export const colors = colorOptions
+
+export const formrules = formRule

@@ -1,5 +1,7 @@
 .lifeTree {
+  position: relative;
   width: 100%;
+  overflow: scroll;
   .tree-box {
     margin-left: 10%;
     color: white;
@@ -17,21 +19,31 @@
         background-color: lightblue;
         left: -7px;
       }
+      &:hover {
+        &::before {
+          transform: scale(1.5);
+          .node__content {
+            background-color: rgba(222, 200, 0, 1);
+          }
+          transition: all 0.3s;
+        }
+      }
       .lifenode {
         position: relative;
-        height: 60px;    
+        width: 50%;
+        height: 60px;
         .node__content {
-          width: 95%;
-          margin-left: 3%;
+          width: 99%;
+          margin-left: 1%;
           padding: {
             left: 5px;
-            // top: 3px;
+            top: 3px;
           }
           background-color: rgba(255, 169, 0, 1);
           .node__time {
             font-size: 13px;
-            line-height: 13px;
-            height: 13px;  //如果出现2行字莫名不能挨在一起，调整字的height即可
+            line-height: 17px;
+            height: 17px; //如果出现2行字莫名不能挨在一起，调整字的height即可
           }
           .node__text {
             font-size: 16px;
@@ -40,13 +52,31 @@
             text-indent: 1em;
             height: 22px;
           }
-          .node-delete{
+          .node-delete {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 2px;
+            right: -40px;
+            .el-button {
+              padding: 8px;
+            }
           }
         }
       }
     }
+  }
+  .footer {
+    //fixed定位相对于窗口
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    // width: 200px;
+    .edit {
+    }
+    .el-button {
+    }
+  }
+  .el-dialog {
+    width: 50% !important;
   }
 }
