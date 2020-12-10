@@ -17,11 +17,11 @@ export default {
   mounted() {},
   watch: {
     //---------------监听路由---------------
-    $route() {
-      if (!sessionStorage.getItem("username")) {
-        this.$router.push("/login");
-      }
-    },
+    // $route() {
+    //   if (!sessionStorage.getItem("username")) {
+    //     this.$router.push("/login");
+    //   }
+    // },
   },
 };
 </script>

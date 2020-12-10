@@ -6,6 +6,7 @@
  * @LastEditors: HongXuan.Lu
  */
 const dateOp = function (data) {
+  console.log(data,typeof(data));
   var date = new Date(data-0)
   var year = date.getFullYear()
   var month = date.getMonth()

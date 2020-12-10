@@ -6,24 +6,22 @@
  * @LastEditors: HongXuan.Lu
 -->
 <template>
-  <div class="devtree-box">
-    <header-vue type="devtree"></header-vue>
-    <div class="devTree">
+  <div class="lifeTree">
+    <header-vue type="lifeTree"></header-vue>
+    <div class="tree-box">
       <div class="node-border" v-for="(item, index) in treeData" :key="index">
         <div class="lifenode">
           <!-- 随机宽度、随机颜色 -->
           <div class="node__content">
             <div class="node__time">
-              <p>{{ item.date }}</p>
+              {{ dateformat(item.time)}}
             </div>
             <div class="node__text">
-              <p>
                 {{ item.text }}
-              </p>
             </div>
-            <div class="nodedelete">
+            <div class="node-delete">
               <el-button
-                @click="deleteNode"
+                @click="deleteNode(index)"
                 type="danger"
                 icon="el-icon-delete"
                 circle
@@ -55,18 +53,27 @@ export default {
     return {
       treeData: [
         {
-          time: new Date(),
+          time: "1111111111111",
           text: "第一次记录",
         },
         {
-          time: new Date(),
+          time: "1111111112222",
           text: "第二次记录",
         },
       ],
     };
   },
+  methods:{
+    deleteNode(index){
+      console.log(index);
+    },
+    editNode(){
+
+    },
+    dateformat : dateFormat
+  },
   mounted() {
-    console.log(dateFormat("1111111111111"));
+    // console.log(dateFormat("1111111111111"));
   },
 };
 </script>
