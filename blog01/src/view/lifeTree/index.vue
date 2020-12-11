@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-10 13:49:56
+ * @LastEditTime: 2020-12-11 16:28:32
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -14,14 +14,14 @@
           <!-- 随机宽度、随机颜色 -->
           <div class="node__content">
             <div class="node__time">
-              {{ dateformat(item.time) }}
+              {{ dateformat(item.dateBegin) }}
             </div>
             <div class="node__text">
-              {{ item.text }}
+              {{ item.content }}
             </div>
             <div class="node-delete">
               <el-button
-                @click="deleteNode(index)"
+                @click="deleteNode(item.lifenodeId)"
                 type="danger"
                 icon="el-icon-delete"
                 circle
@@ -44,20 +44,19 @@
     </div>
     <el-dialog :visible.sync="dialogVisible" width="30%">
       <add-dialog @submit="submitAdd"></add-dialog>
-      <!-- <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
-          确 定
-        </el-button>
-      </span> -->
     </el-dialog>
   </div>
 </template>
 
 <script>
 import headerVue from "@/components/common/header.vue";
-import { dateFormat } from "../../utils/help.js";
+import { dateFormat, getRandomId } from "../../utils/help.js";
 import addDialog from "../../components/lifeTree/addDialog.vue";
+import {
+  addLifeNode,
+  deleteLifeNode,
+  getLifeTree,
+} from "../../request/lifeTreeApi.js";
 export default {
   components: {
     headerVue,
@@ -65,39 +64,41 @@ export default {
   },
   data() {
     return {
-      treeData: [
-        {
-          time: "1111111111111",
-          text: "第一次记录",
-        },
-        {
-          time: "1111111112222",
-          text: "第二次记录",
-        },
-        {
-          time: "1111111111111",
-          text: "第一次记录",
-        },
-        {
-          time: "1111111112222",
-          text: "第二次记录",
-        },
-      ],
+      treeData: [],
       dialogVisible: false,
     };
   },
   methods: {
-    submitAdd() {},
-    deleteNode(index) {
-      console.log(index);
-    },
     editNode() {
       this.dialogVisible = true;
     },
     dateformat: dateFormat,
+    getId: getRandomId,
+    // ---------接口部分------------
+    async submitAdd(data) {
+      this.dialogVisible = false;
+      data.dateBegin = data.dateBegin.getTime();
+      data.dateEnd = data.dateEnd.getTime();
+      data.lifenodeId = this.getId() + sessionStorage.getItem("username");
+      var res = await addLifeNode("addLife", data);
+      if (res === "Y") {
+        this.treeData.push(data);
+      } else {
+        console.log("nmb");
+      }
+    },
+    async deleteNode(id) {
+      const res = await deleteLifeNode("deleteLife", id);
+      this.treeData = this.treeData.filter((item) => item.lifenodeId != id);
+      console.log(res);
+    },
+    async getall() {
+      const res = await getLifeTree("allLife");
+      this.treeData = res;
+    },
   },
-  mounted() {
-    // console.log(dateFormat("1111111111111"));
+  created() {
+    this.getall();
   },
 };
 </script>

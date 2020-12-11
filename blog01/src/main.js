@@ -2,7 +2,7 @@
  * @Description: 入口文件
  * @Author: Do not edit
  * @Date: 2020-11-19 10:17:21
- * @LastEditTime: 2020-12-08 10:00:35
+ * @LastEditTime: 2020-12-11 14:30:56
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -18,6 +18,7 @@ Vue.use(elementUI);
 Vue.use(mavonEditor);
 
 
+console.log(typeof Vue,'????',Object.keys(Vue));
 Vue.config.productionTip = false
 
 new Vue({

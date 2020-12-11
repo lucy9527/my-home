@@ -1,8 +1,8 @@
 /*
- * .Description: 前端路由控制
- * .Author: Do not edit
- * .Date: 2020-11-19 14:34:18
- * @LastEditTime: 2020-12-09 14:41:34
+ * @Description: 
+ * @Author: Do not edit
+ * @Date: 2020-11-27 18:34:33
+ * @LastEditTime: 2020-12-11 17:05:27
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -14,7 +14,8 @@ import game from '../view/game/index.vue'
 import edit from '../view/paperEdit/index.vue'
 import blog from '../view/paperContent/index.vue'
 import editor from '../components/editor.vue'
-import devtree from '../view/devTree'
+import lifetree from '../view/lifeTree'
+import tasktree from '../view/taskTree'
 
 Vue.use(VueRouter)
 
@@ -56,9 +57,13 @@ const routes = [
     name : 'editor',
     component : editor  },
   {
-    path: "/devtree",
-    name : 'devtree',
-    component : devtree  },   
+    path: "/lifetree",
+    name : 'lifetree',
+    component : lifetree  },
+  {
+    path: "/tasktree",
+    name : 'tasktree',
+    component : tasktree  },     
 ]
 
 const router = new VueRouter({routes})

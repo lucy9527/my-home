@@ -2,18 +2,20 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:44:15
- * @LastEditTime: 2020-12-07 17:27:33
+ * @LastEditTime: 2020-12-11 14:15:55
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
 const app =  express();
 const bodyParser = require('body-parser')
 const fs = require('fs')
+//--------------图片处理-------------------
 const {dealImg,readDict} = require('./dealImg')
 //---------------数据库--------------------
 const dbUser = require('./dbUser.js')
 const dbArticle = require('./dbArticle.js');
-const { json } = require('express');
+//---------------LifeTree处理--------------
+const {  getLifeTree,addLifeNode, deleteLifeNode} = require('./timeTree/dealTimeTree.js')
 //------------------处理所有请求-------------------------
 // 解析body
 // parse application/json  
@@ -29,6 +31,10 @@ app.use(function(req,res,next){
   next()
 })
 
+app.post("*",function(req,res,next){
+  console.log(req.path);
+  next()
+})
 //-------------------具体接口-----------------------
 app.post('/login',function(req,res){
   //登录
@@ -89,11 +95,15 @@ app.post('/myview',function(req,res){
 
 // -----------------------个人文章----------------------------
 app.post('/userpaper',function(req,res){  
-  console.log(req.body.username);
   new Promise(function(resolve,reject){
     dbArticle('userpaper', req.body.username ,resolve)
   }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.end(JSON.stringify(data))})
 })
+//--------------------------------------------------------------
+app.post('/deleteLife/:lifenodeId',deleteLifeNode)
+app.post('/addLife',addLifeNode)
+app.post('/allLife/:username',getLifeTree)
+
 app.listen(3000)
