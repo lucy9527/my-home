@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-04 20:05:03
- * @LastEditTime: 2020-12-06 10:45:42
+ * @LastEditTime: 2020-12-12 00:33:53
  * @LastEditors: HongXuan.Lu
  */
 const { json } = require('express');
@@ -12,7 +12,6 @@ const path = require("path");
 function getId(){
   var id = Math.floor(Math.random()*2147483646);
   // fs.mkdirSync('./images/'+id) //node创建目录
-  // 可以加上username表示个人的数据
   return id;
 }
 //存储图片

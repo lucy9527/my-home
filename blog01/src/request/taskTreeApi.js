@@ -2,10 +2,10 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 17:47:43
- * @LastEditTime: 2020-12-11 16:54:27
+ * @LastEditTime: 2020-12-11 23:25:05
  * @LastEditors: HongXuan.Lu
  */
-import baseUrl from './config'
+import baseUrl from './config.js'
 var ajax = new XMLHttpRequest()
 var param = ""
 // ----------------添加-------------------------

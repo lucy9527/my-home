@@ -1,0 +1,30 @@
+@keyframes scale15 {
+  // 0% {
+  //   transform: scaleX(1);
+  // }
+  // 50% {
+  //   transform: scaleX(1.1);
+  // }
+  // 100% {
+  //   transform: scaleX(1);
+  // }
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(1.1);
+  }
+}
+.scale1_5 {
+  transition: transform 1s;
+  &:hover {
+    transform: scale(1.1);
+    font-weight: 600 !important;
+  }
+  img {
+    transition: transform 1s;
+    &:hover {
+      transform: scaleX(1.2);
+    }
+  }
+}

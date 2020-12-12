@@ -2,18 +2,18 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-11 17:16:34
+ * @LastEditTime: 2020-12-12 17:44:15
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="header" :class="type + 'bg'">
     <div class="left">
-      <a @click="goTo('home')" class="hand">首页</a>
-      <a @click="goTo('myArticle')" class="hand">我的博客</a>
-      <a @click="goTo('game')" class="hand">游戏页面</a>
-      <a @click="goTo('edit')" class="hand">博客编辑</a>
-      <a @click="goTo('lifetree')" class="hand">树生活</a>
-      <a @click="goTo('tasktree')" class="hand">任务树</a>
+      <a @click="goTo('home')" class="hand scale1_5">首页</a>
+      <a @click="goTo('myArticle')" class="hand scale1_5">我的博客</a>
+      <a @click="goTo('game')" class="hand scale1_5">游戏页面</a>
+      <a @click="goTo('edit')" class="hand scale1_5">博客编辑</a>
+      <a @click="goTo('lifetree')" class="hand scale1_5">树生活</a>
+      <a @click="goTo('tasktree')" class="hand scale1_5">任务树</a>
     </div>
     <div class="middle"></div>
     <div class="right"></div>
@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     goTo(type) {
-      console.log("跳转", type);
       this.$router.push(type);
     },
   },

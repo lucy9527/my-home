@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 10:43:15
- * @LastEditTime: 2020-12-10 18:07:58
+ * @LastEditTime: 2020-12-11 20:38:27
  * @LastEditors: HongXuan.Lu
  */
 const colorOptions = [

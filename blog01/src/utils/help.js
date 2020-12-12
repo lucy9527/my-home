@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 17:14:31
- * @LastEditTime: 2020-12-11 13:21:17
+ * @LastEditTime: 2020-12-12 13:29:19
  * @LastEditors: HongXuan.Lu
  */
 const dateOp = function (data) {
@@ -13,8 +13,8 @@ const dateOp = function (data) {
   var minute = date.getMinutes()
   return [year,month,day,minute].join('/')
 }
-function getId(){
-  var id = Math.floor(Math.random()*2147483646);
+function getId(num=5,offset=0){
+  var id = Math.floor(Math.random()*num + offset);
   return id;
 }
 export const  dateFormat = dateOp;

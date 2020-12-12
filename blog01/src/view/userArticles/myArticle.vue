@@ -2,7 +2,7 @@
  * @Description: 我的博客页面
  * @Author: Do not edit
  * @Date: 2020-11-25 18:40:09
- * @LastEditTime: 2020-12-07 20:11:26
+ * @LastEditTime: 2020-12-12 19:25:18
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -13,24 +13,23 @@
 </template>
 
 <script>
-import headerVue from '@/components/common/header.vue';
-import mainVue from './main.vue'
+import headerVue from "@/components/common/header.vue";
+import mainVue from "./main.vue";
 export default {
-  components:{
+  components: {
     headerVue,
-    mainVue
+    mainVue,
   },
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
 <style lang= "scss">
-.myArticle-box{
+.myArticle-box {
   width: 100%;
+  height: 100%;
 }
 </style>

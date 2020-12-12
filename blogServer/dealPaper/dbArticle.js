@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-07 17:26:03
+ * @LastEditTime: 2020-12-12 18:57:53
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -31,6 +31,12 @@ function queryData(sql,type){
           case 'insert' : 
             resolve(data.length ? 'yes' : 'no');
             break;
+          case 'count' : 
+            resolve(data['0']['COUNT(*)']);
+            break;
+          default :
+            resolve('ok');
+            break;           
         }
       }
     })
@@ -40,17 +46,28 @@ function dbOptions(op , data,resolve){
   var ret = ""
   switch (op) {
     case 'searchAll':
-      // var sql = 'SELECT * FROM `article` WHERE `username` = "' + data.username+'"'
-      var sql = 'SELECT * FROM `article`'
-      queryData(sql,'all').then(data=>resolve(data))
+      var sql = `SELECT * FROM article limit ${data*12-12} , ${data*12}`
+      queryData(sql,'all').then(data=>{
+        var sql = `SELECT COUNT(*) FROM article`
+        queryData(sql,'count').then(total=>{
+          resolve({data,'total' : total})
+        })
+      })
       break;
     case 'searchid':
       var sql = `SELECT * FROM article where articleId = ${data}`
       queryData(sql,'id').then(data=>resolve(data))
       break;
     case 'userpaper':
-      var sql = `SELECT * FROM article where username = '${data}'`
-      queryData(sql,'all').then(data=>resolve(data))
+      var username = data.username
+      var pageNo = data.pageNo
+      var sql = `SELECT * FROM article where username = '${username}' limit ${pageNo*12-12} , ${pageNo*12} `
+      queryData(sql,'all').then(data=>{
+        var sql = `SELECT COUNT(*) FROM article where username = '${username}' `
+        queryData(sql,'count').then(total=>{
+          resolve({data,'total' : total})
+        })
+      })
       break;
     case 'insert':
       var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.articleId}')` //初始化给comment赋值文章id
@@ -71,14 +88,12 @@ function dbOptions(op , data,resolve){
         }
       })
       break;
-    case 'delete':
-      db.query("DELETE FROM userdata WHERE userid= 2",function(err,data){
-        if(err){
-          console.log("数据库访问出错",err);
-        }else{
-          console.log(data);
-        }
-      })
+    case 'delpaper':
+      var sql = `DELETE FROM article where articleId = '${data}' `
+      queryData(sql,'del').then(data=>
+        {
+          resolve(data)
+        })
       break;
     default:
       break;

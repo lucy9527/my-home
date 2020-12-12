@@ -2,15 +2,15 @@
  * @Description: 文章详情页
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-07 20:12:07
+ * @LastEditTime: 2020-12-12 19:44:26
  * @LastEditors: HongXuan.Lu
 -->
 <template>
-  <div>
+  <div class="paper-content">
     <header-vue type="articles"></header-vue>
     <div class="paper-box">
       <div class="blog-header">
-        <h2 class="title">{{ blogData.title }}</h2>
+        <p class="title">{{ blogData.title }}</p>
         <p class="date">2020</p>
       </div>
       <div class="blog-content" :blogData="blogData">
@@ -31,14 +31,16 @@
         <div class="views">
           <p class="v_header">评论区留言：</p>
           <ul>
-            <li class="view-card shadow"
+            <li
+              class="view-card shadow"
               v-for="(item, index) in viewList"
-              :key="index + 'v'">
+              :key="index + 'v'"
+            >
               <div class="view-card">
-                  <p class="text">{{ item.split("+")[1] }}</p>
-                  <p class="name">{{ item.split("+")[0] }} 2018/4/12 20:46</p>
+                <p class="text">{{ item.split("+")[1] }}</p>
+                <p class="name">{{ item.split("+")[0] }} 2018/4/12 20:46</p>
               </div>
-              </li>
+            </li>
           </ul>
         </div>
       </div>
@@ -82,7 +84,6 @@ export default {
       console.log(res);
     },
     async getPaper() {
-      //根据id获取文章
       const res = await getBlog("paper", this.articleId);
       this.blogData = res[0];
       this.comment = res[0].comment;

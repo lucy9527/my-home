@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 10:11:40
- * @LastEditTime: 2020-12-11 14:11:56
+ * @LastEditTime: 2020-12-11 23:08:11
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -114,7 +114,6 @@ export default {
       this.$refs["addForm"].resetFields();
     },
   },
-  mounted() {},
 };
 </script>
 

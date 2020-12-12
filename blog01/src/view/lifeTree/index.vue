@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-11 16:28:32
+ * @LastEditTime: 2020-12-12 13:38:06
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -14,7 +14,7 @@
           <!-- 随机宽度、随机颜色 -->
           <div class="node__content">
             <div class="node__time">
-              {{ dateformat(item.dateBegin) }}
+              {{ dateformat(item.end) }}
             </div>
             <div class="node__text">
               {{ item.content }}
@@ -79,7 +79,8 @@ export default {
       this.dialogVisible = false;
       data.dateBegin = data.dateBegin.getTime();
       data.dateEnd = data.dateEnd.getTime();
-      data.lifenodeId = this.getId() + sessionStorage.getItem("username");
+      data.lifenodeId =
+        this.getId(2147483646) + sessionStorage.getItem("username");
       var res = await addLifeNode("addLife", data);
       if (res === "Y") {
         this.treeData.push(data);

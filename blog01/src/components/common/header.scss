@@ -25,7 +25,7 @@
     left: 50px;
   }
   position: relative;
-  height: 50px;
+  height: 8%;
   @include flexRow;
   .left,
   .mid,
@@ -37,6 +37,9 @@
       padding-right: 10px;
     }
   }
+}
+.articlesbg {
+  background-color: rgba(245, 222, 179, 0.8);
 }
 .homebg {
   @include common;

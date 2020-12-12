@@ -1,86 +1,108 @@
-.paper-box {
-  min-width: 1200px;
-  width: 100%;
-  overflow-y: scroll;
-  text-align: center;
-  .blog-header {
-    .title {
-    }
-    .date {
-      font-size: 14px;
-      text-indent: 10em;
-      font-style: italic;
-    }
-  }
-  .blog-content {
+.paper-content {
+  height: 100%;
+  .paper-box {
+    height: 100%;
+    position: relative;
+    padding-top: 10px;
+    min-width: 1200px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-
-    .content {
-      width: 80%;
-      //内容区域阴影
-      background-color: #cccccc;
-      border-radius: 10px;
-      box-shadow: inset 0 1px 2px 1px #000;
-      min-height: 300px;
-      background-color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      opacity: 0.6;
+      z-index: -1;
+      background: url("../../assets/images/bg/article.jpg");
+      background-size: 100%;
     }
-    margin-bottom: 20px;
-  }
-  .footer {
-    width: 100%;
-    padding: 0 10% 0 10%;
-    .comment-edit {
+    .blog-header {
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .date {
+        font-size: 14px;
+        text-indent: 10em;
+        font-style: italic;
+      }
+    }
+    .blog-content {
+      width: 100%;
       display: flex;
-      align-items: flex-end;
-      padding-left: 5%;
-      .el-textarea {
-        box-shadow: 5px lightblue;
-        margin-right: 20px;
-        .el-textarea__inner {
-          color: black !important;
-          background-color: rgba(#9f8641, 0.2);
-        }
-      }
-      .el-button {
-        padding: 3px;
-        height: 30px;
-        span {
-          font-size: 12px;
-          padding: 0;
-        }
-      }
-    }
-    .views {
+      justify-content: center;
       text-align: left;
-      .v_header {
-        text-align: center;
-        font-style: 16px;
-        line-height: 22px;
-        height: 22px;
-        background-color: rgba($color: #0e0909, $alpha: 0.5);
-        border-radius: 50%;
-        color: lightskyblue;
-        padding-left: 20px;
+      .content {
+        padding: 7px;
+        width: 80%;
+        background-color: #cccccc;
+        border-radius: 10px;
+        box-shadow: inset 0 1px 1px 1px #000;
+        min-height: 300px;
+        background-color: rgba(255, 255, 255, 0.6);
       }
-      ul {
-        border-left: 1px solid rgba($color: #744f4f, $alpha: 0.5);
-        .view-card {
-          position: relative;
-          width: 600px;
-          height: 100px;
-          background: #ccc;
-          border-radius: 10px;
-          margin: 10px;
-          margin-bottom: 20px;
-          .text {
-            position: absolute;
-            top: 5px;
+      margin-bottom: 20px;
+    }
+    .footer {
+      width: 100%;
+      padding: 0 10% 0 10%;
+      .comment-edit {
+        display: flex;
+        align-items: flex-end;
+        padding-left: 5%;
+        .el-textarea {
+          box-shadow: 5px lightblue;
+          margin-right: 20px;
+          .el-textarea__inner {
+            color: black !important;
+            background-color: rgba(#9f8641, 0.2);
           }
-          .name {
-            position: absolute;
-            bottom: 5px;
+        }
+        .el-button {
+          padding: 3px;
+          height: 30px;
+          margin-bottom: 10px;
+          span {
+            font-size: 12px;
+            padding: 0;
+          }
+        }
+      }
+      .views {
+        margin-top: 10px;
+        text-align: left;
+        .v_header {
+          text-align: center;
+          font-style: 16px;
+          line-height: 22px;
+          height: 22px;
+          background-color: rgba($color: #0e0909, $alpha: 0.5);
+          border-radius: 50%;
+          color: lightskyblue;
+          padding-left: 20px;
+        }
+        ul {
+          border-left: 1px solid rgba($color: #744f4f, $alpha: 0.5);
+          .view-card {
+            position: relative;
+            width: 600px;
+            height: 100px;
+            background: #ccc;
+            border-radius: 10px;
+            margin: 10px;
+            margin-bottom: 20px;
+            .text {
+              position: absolute;
+              top: 5px;
+            }
+            .name {
+              position: absolute;
+              bottom: 5px;
+            }
           }
         }
       }

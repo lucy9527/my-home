@@ -2,17 +2,25 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-07 13:34:11
+ * @LastEditTime: 2020-12-12 19:00:19
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="home-page">
     <div class="home-content">
-      <div class="blog-box" v-for="(item, index) in blogData" :key="index">
+      <div
+        class="blog-box scale1_5"
+        v-for="(item, index) in blogData"
+        :key="index"
+        @click="goTo('blog', item.articleId)"
+      >
         <div class="blog-img">
-          <img :src="jsonToBuffer(item)" alt="#" />
+          <img
+            :src="require(`../../assets/images/home-paper/${getRandom(5)}.jpg`)"
+            alt="#"
+          />
         </div>
-        <div class="blog-intro" @click="goTo('blog', item.articleId)">
+        <div class="blog-intro">
           <p class="intro">{{ item.intro }}</p>
           <div class="blog-title">
             <p :class="'color' + Math.floor(Math.random() * 5)" class="title">
@@ -23,43 +31,38 @@
           </div>
         </div>
       </div>
+      <page-vue :total="totalSize" @pageChange="pageChange"></page-vue>
     </div>
   </div>
 </template>
 
 <script>
-import { getBlog } from "@/request/ajax";
+import pageVue from "@/components/common/pagination.vue";
+import { getBlog } from "@/request/ajax.js";
+import { getRandomId } from "../../utils/help.js";
 export default {
+  components: {
+    pageVue,
+  },
   data() {
     return {
       blogData: "",
-      imgData: "",
+      totalSize: 0,
     };
   },
   methods: {
-    jsonToBuffer(data) {
-      var key = "" + data.articleId;
-      var img = this.imgData[key];
-      return img ? Buffer.from(JSON.parse(JSON.stringify(img))) : "";
-    },
+    getRandom: getRandomId,
     goTo(type, id) {
       if (type == "blog") this.$store.commit("allpaper/setarticleId", id);
       this.$router.push(type);
     },
-    async reqArticle() {
-      const res = await getBlog("allpaper");
-      this.imgData = res.pop().img;
-      this.blogData = res;
-      // this.$store.commit("allpaper/setpaper", this.blogData);
-      // this.$store.commit("allpaper/setimg", this.imgData);
-      // this.testImg = Buffer.from(
-      //   JSON.parse(JSON.stringify(this.imgData["1242630713"]))
-      // );
-      // const reader = new FileReader();
-      // reader.readAsDataURL(this.imgData["1242630713"]);
-      // reader.onload = () => {
-      //   this.testImg = reader.result;
-      // };
+    async reqArticle(pageNo = 1) {
+      const res = await getBlog("allpaper", pageNo);
+      this.blogData = res.data;
+      this.totalSize = res.total;
+    },
+    pageChange(pageNo) {
+      this.reqArticle(pageNo);
     },
   },
   mounted() {

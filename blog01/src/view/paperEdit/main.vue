@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-06 10:51:22
+ * @LastEditTime: 2020-12-12 19:47:29
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -17,15 +17,6 @@
         </el-form-item>
         <el-form-item label="文章内容:">
           <el-button type="primary" @click="goTo('editor')">编辑</el-button>
-        </el-form-item>
-        <el-form-item label="上传封面:">
-          <div class="img-filter">
-            <div class="img-box">
-              <img :src="article.img" alt="暂无" />
-              <input type="file" @click="clicked('img')" @change="change" />
-            </div>
-          </div>
-          <!-- <el-input v-model="article.picture"></el-input> -->
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -45,24 +36,12 @@ export default {
         title: "",
         intro: "",
         content: "",
-        img: "",
+        // img: "",
       },
       curclick: "",
     };
   },
   methods: {
-    //--------------上传图片-------------------
-    clicked(type) {
-      this.curclick = type;
-    },
-    change(e) {
-      const reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload = () => {
-        this.article[this.curclick] = reader.result;
-      };
-    },
-    // ----------------上传文章信息-------------------------
     async publishData() {
       var data = this.$store.getters["blogedit/getall"];
       data.username = sessionStorage.getItem("username");

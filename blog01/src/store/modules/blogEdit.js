@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-03 11:09:36
- * @LastEditTime: 2020-12-06 14:10:28
+ * @LastEditTime: 2020-12-12 00:27:11
  * @LastEditors: HongXuan.Lu
  */
 const edit = {
@@ -11,7 +11,7 @@ const edit = {
     title:"",
     intro:"",
     content:"",
-    img:"",
+    // img:"",
   },
   mutations: {
     setall(state,val){
@@ -30,9 +30,9 @@ const edit = {
     setcontent(state, val) {
       state.content = val
     },
-    setimg(state, newValue) {
-      state.img = newValue
-    },
+    // setimg(state, newValue) {
+    //   state.img = newValue
+    // },
   },
   getters: {
     getall(state){
@@ -48,9 +48,9 @@ const edit = {
     content(state) {
       return state.content
     },
-    img(state) {
-      return state.img
-    },
+    // img(state) {
+    //   return state.img
+    // },
   },
   actions: {}
 }

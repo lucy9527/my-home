@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-11 16:55:31
+ * @LastEditTime: 2020-12-12 13:29:05
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -14,7 +14,7 @@
           <!-- 随机宽度、随机颜色 -->
           <div class="node__content">
             <div class="node__time">
-              {{ dateformat(item.dateBegin) }}
+              {{ dateformat(item.end) }}
             </div>
             <div class="node__text">
               {{ item.content }}
@@ -77,14 +77,12 @@ export default {
     // ---------接口部分------------
     async submitAdd(data) {
       this.dialogVisible = false;
-      data.dateBegin = data.dateBegin.getTime();
       data.dateEnd = data.dateEnd.getTime();
-      data.tasknodeId = this.getId() + sessionStorage.getItem("username");
+      data.tasknodeId =
+        this.getId(2147483646) + sessionStorage.getItem("username");
       var res = await addTaskNode("addTask", data);
       if (res === "Y") {
         this.treeData.push(data);
-      } else {
-        console.log("nmb");
       }
     },
     async deleteNode(id) {
