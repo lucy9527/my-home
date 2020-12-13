@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-12 13:38:06
+ * @LastEditTime: 2020-12-13 12:04:56
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -77,8 +77,8 @@ export default {
     // ---------接口部分------------
     async submitAdd(data) {
       this.dialogVisible = false;
-      data.dateBegin = data.dateBegin.getTime();
-      data.dateEnd = data.dateEnd.getTime();
+      data.start = data.start.getTime();
+      data.end = data.end.getTime();
       data.lifenodeId =
         this.getId(2147483646) + sessionStorage.getItem("username");
       var res = await addLifeNode("addLife", data);

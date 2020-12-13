@@ -24,22 +24,22 @@
           <el-col :span="11"></el-col>
         </el-select>
       </el-form-item>
-      <el-form-item label="开始时间：" prop="dateBegin">
+      <el-form-item label="开始时间：" prop="start">
         <el-col :span="11">
           <el-date-picker
             type="date"
             placeholder="选择日期"
-            v-model="addForm.dateBegin"
+            v-model="addForm.start"
             style="width: 100%"
           ></el-date-picker>
         </el-col>
       </el-form-item>
-      <el-form-item label="结束时间：" prop="dateEnd">
+      <el-form-item label="结束时间：" prop="end">
         <el-col :span="11">
           <el-date-picker
             type="date"
             placeholder="选择日期"
-            v-model="addForm.dateEnd"
+            v-model="addForm.end"
             style="width: 100%"
           ></el-date-picker>
         </el-col>
@@ -78,8 +78,8 @@ export default {
       addForm: {
         name: "",
         color: "",
-        dateBegin: new Date(),
-        dateEnd: "",
+        start: new Date(),
+        end: "",
         label: "", //多选框这里是【】，单选是""
         content: "",
       },
@@ -94,8 +94,8 @@ export default {
       this.addForm = {
         name: "",
         color: "",
-        dateBegin: new Date(),
-        dateEnd: "",
+        start: new Date(),
+        end: "",
         label: "", //多选框这里是【】，单选是""
         content: "",
       };

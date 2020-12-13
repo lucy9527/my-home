@@ -1,7 +1,7 @@
 .paper-content {
   height: 100%;
   .paper-box {
-    height: 100%;
+    min-height: 575px;
     position: relative;
     padding-top: 10px;
     min-width: 1200px;
@@ -90,7 +90,7 @@
           .view-card {
             position: relative;
             width: 600px;
-            height: 100px;
+            height: 60px;
             background: #ccc;
             border-radius: 10px;
             margin: 10px;

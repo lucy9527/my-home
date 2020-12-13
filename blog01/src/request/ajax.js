@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-12 18:47:32
+ * @LastEditTime: 2020-12-13 00:20:36
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -102,9 +102,10 @@ function deleteUserBlog(type,id){
   })
 }
 //------------------提交评论------------------------
-function subCom(type,bodyData){
+function subCom(type,id ,data){
   var obj = {}
-  obj['data'] = bodyData
+  obj['id'] = id
+  obj.data = data
   ajax.open('post',baseUrl+type ,true)
   ajax.setRequestHeader('Content-type','application/json');
   ajax.send(JSON.stringify(obj))
@@ -126,7 +127,3 @@ export const getBlog = getBlogs;
 export const subV = subCom;
 export const getUserBlog = getUserBlogs;
 export const deleteBlog = deleteUserBlog;
-
-
-
-

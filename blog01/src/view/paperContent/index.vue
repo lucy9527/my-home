@@ -2,7 +2,7 @@
  * @Description: 文章详情页
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-12 19:44:26
+ * @LastEditTime: 2020-12-13 01:09:08
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -37,8 +37,8 @@
               :key="index + 'v'"
             >
               <div class="view-card">
-                <p class="text">{{ item.split("+")[1] }}</p>
-                <p class="name">{{ item.split("+")[0] }} 2018/4/12 20:46</p>
+                <p class="text">{{ item.split("=")[1] }}</p>
+                <p class="name">{{ item.split("=")[0] }} 2018/4/12 20:46</p>
               </div>
             </li>
           </ul>
@@ -50,7 +50,7 @@
 
 <script>
 import headerVue from "@/components/common/header.vue";
-import { subV, getBlog } from "@/request/ajax.js";
+import { subV, getBlog, count } from "@/request/ajax.js";
 
 export default {
   components: {
@@ -63,6 +63,7 @@ export default {
       myView: "",
       viewList: [],
       comment: "",
+      st: "",
     };
   },
   methods: {
@@ -76,25 +77,34 @@ export default {
         this.comment +
         "&" +
         sessionStorage.getItem("username") +
-        "+" +
+        "=" +
         this.myView.trim();
       this.myView = "";
-      const res = await subV("myview", newComment);
-      this.getPaper();
-      console.log(res);
+      const res = await subV("myview", this.articleId, newComment);
+      if (res === "yes") {
+        this.viewList.push(
+          sessionStorage.getItem("username") + "=" + this.myView.trim()
+        );
+      }
     },
     async getPaper() {
       const res = await getBlog("paper", this.articleId);
       this.blogData = res[0];
       this.comment = res[0].comment;
-      if (res[0].comment !== "") {
-        this.viewList = res[0].comment.split("&").slice(1);
-      }
+      this.viewList = res[0].comment.split("&").filter((item) => item !== "");
+    },
+    async countAdd() {
+      const res = await count();
+      console.log(res);
     },
   },
   mounted() {
     this.articleId = this.$store.getters["allpaper/getid"];
     this.getPaper();
+    this.st = setTimeout(this.countAdd, 6000);
+  },
+  beforeDestroy() {
+    clearTimeout(this.st);
   },
 };
 </script>

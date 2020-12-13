@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-11 14:05:57
+ * @LastEditTime: 2020-12-13 11:46:49
  * @LastEditors: HongXuan.Lu
  */
 const mysql = require("mysql");
@@ -45,7 +45,7 @@ function dbOptions(op , data,resolve){
       queryData(sql,'all').then(data=>resolve(data))
       break;
     case 'addLifeNode':
-      var sql = `INSERT INTO lifetree (name,color,start,end,label,content,username,lifenodeId) value ("${data.name}","${data.color}","${data.dateBegin}","${data.dateEnd}","${data.label}","${data.content}","${data.username}","${data.lifenodeId}") `
+      var sql = `INSERT INTO lifetree (name,color,start,end,label,content,username,lifenodeId) value ("${data.name}","${data.color}","${data.start}","${data.end}","${data.label}","${data.content}","${data.username}","${data.lifenodeId}") `
       queryData(sql,'insert').then(data=>resolve(data))
       break;
     case 'deleLifeNode':

@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-12 18:57:53
+ * @LastEditTime: 2020-12-13 00:43:09
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -70,15 +70,14 @@ function dbOptions(op , data,resolve){
       })
       break;
     case 'insert':
-      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${data.articleId}')` //初始化给comment赋值文章id
+      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${''}')` //初始化给comment赋值文章id
       queryData(sql,'insert').then(userData=>
         {
           resolve(userData? 'no' : 'yes')
         })
       break;
     case 'update':
-      var arr = data.split('+')
-      var sql = `UPDATE article SET comment = '${data}' where articleId = '${arr[0]}'`
+      var sql = `UPDATE article SET comment = '${data.data}' where articleId = '${data.id}'`
       db.query(sql,function(err,data){
         if(err){
           console.log("数据库访问出错",err);

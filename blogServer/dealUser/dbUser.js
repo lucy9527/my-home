@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-01 09:39:32
+ * @LastEditTime: 2020-12-13 11:40:40
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -73,7 +73,6 @@ function dbOptions(op , data ,resolve){
     default:
       break;
   }
-  console.log(ret);
   return ret
 }
 module.exports = dbOptions;

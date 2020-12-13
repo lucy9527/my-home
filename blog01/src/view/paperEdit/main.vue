@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-12 19:47:29
+ * @LastEditTime: 2020-12-13 01:02:17
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -54,6 +54,7 @@ export default {
         return;
       }
       this.publishData();
+      this.$router.push("home");
     },
     goTo(type) {
       this.$router.push(type);

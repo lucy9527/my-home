@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-12 15:58:58
- * @LastEditTime: 2020-12-12 19:54:06
+ * @LastEditTime: 2020-12-13 00:33:51
  * @LastEditors: HongXuan.Lu
  */
 const {getId} = require('../tools.js')
@@ -38,7 +38,7 @@ function paperId(req,res){
 }
 function paperView(req,res){  
   new Promise(function(resolve,reject){
-    dbArticle('update', req.body.data ,resolve)
+    dbArticle('update', req.body ,resolve)
   }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.end(data)})

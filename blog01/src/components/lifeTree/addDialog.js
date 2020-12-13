@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 10:43:15
- * @LastEditTime: 2020-12-10 18:07:58
+ * @LastEditTime: 2020-12-13 11:36:33
  * @LastEditors: HongXuan.Lu
  */
 const colorOptions = [
@@ -36,10 +36,10 @@ const formRule = {
   color: [
     { required: true, message: '请选择一种背景颜色', trigger: 'change' }
   ],
-  // dateBegin: [
+  // start: [
   //   { type: 'date', required: true, message: '请选择开始时间', trigger: 'change' }
   // ],
-  dateEnd: [
+  end: [
     { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
   ],
   // label: [
