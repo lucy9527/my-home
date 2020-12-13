@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-12 15:58:58
- * @LastEditTime: 2020-12-13 00:33:51
+ * @LastEditTime: 2020-12-13 20:18:18
  * @LastEditors: HongXuan.Lu
  */
 const {getId} = require('../tools.js')
@@ -58,11 +58,19 @@ function delpaper(req,res){
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.end(JSON.stringify(data))})
 }
+function countAdd(req,res){ 
+  new Promise(function(resolve,reject){
+    dbArticle('count', req.body.id ,resolve)
+  }).then(data=>{
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.end(JSON.stringify(data))})
+}
 module.exports = {
   edit,
   paperAll,
   paperId,
   paperView,
   userpaper,
-  delpaper
+  delpaper,
+  countAdd
 }

@@ -1,4 +1,5 @@
 .edit-box {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -16,31 +17,33 @@
     z-index: -1;
   }
   .edit-zone {
-    border: 1px solid yellow;
-    width: 60%;
+    width: 80%;
     padding: {
       left: 10px;
       top: 10px;
       right: 10px;
       bottom: 10px;
     }
+    .el-form {
+      .el-form-item__label {
+        font-weight: 600;
+      }
+    }
     .title {
       .el-input {
         width: 60%;
       }
     }
-    .img-filter {
-      height: 200px;
-      display: flex;
-      .img-box {
-        height: 120px;
-        width: 130px;
-        padding: 10px 25px;
-        img {
-          display: inline-block;
-          height: 100%;
-          width: 100%;
-          background-image: url("../../assets/images/zhanwei.jpg");
+    #editor {
+      height: 346px;
+      .fa-mavon-floppy-o {
+        // 保存按钮
+        line-height: 22px;
+        height: 22px;
+        width: 28px;
+        &::before {
+          font-size: 17px;
+          color: red;
         }
       }
     }

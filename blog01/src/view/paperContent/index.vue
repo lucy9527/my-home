@@ -2,7 +2,7 @@
  * @Description: 文章详情页
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 01:09:08
+ * @LastEditTime: 2020-12-13 20:15:02
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -11,7 +11,7 @@
     <div class="paper-box">
       <div class="blog-header">
         <p class="title">{{ blogData.title }}</p>
-        <p class="date">2020</p>
+        <p class="date">{{ dateformat(blogData.date) }}</p>
       </div>
       <div class="blog-content" :blogData="blogData">
         <div v-html="blogData.content" class="content"></div>
@@ -50,7 +50,8 @@
 
 <script>
 import headerVue from "@/components/common/header.vue";
-import { subV, getBlog, count } from "@/request/ajax.js";
+import { subV, getBlog, countadd } from "@/request/ajax.js";
+import { dateFormat } from "../../utils/help.js";
 
 export default {
   components: {
@@ -67,6 +68,7 @@ export default {
     };
   },
   methods: {
+    dateformat: dateFormat,
     async subView() {
       // 更新评论
       if (this.myView.trim() === "") {
@@ -79,13 +81,13 @@ export default {
         sessionStorage.getItem("username") +
         "=" +
         this.myView.trim();
-      this.myView = "";
       const res = await subV("myview", this.articleId, newComment);
       if (res === "yes") {
         this.viewList.push(
           sessionStorage.getItem("username") + "=" + this.myView.trim()
         );
       }
+      this.myView = "";
     },
     async getPaper() {
       const res = await getBlog("paper", this.articleId);
@@ -94,7 +96,7 @@ export default {
       this.viewList = res[0].comment.split("&").filter((item) => item !== "");
     },
     async countAdd() {
-      const res = await count();
+      const res = await countadd("count", this.articleId);
       console.log(res);
     },
   },

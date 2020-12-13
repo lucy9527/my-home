@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-12 19:40:10
+ * @LastEditTime: 2020-12-13 14:59:40
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -26,6 +26,5 @@ export default {
 
 <style lang="scss">
 .edit-page {
-  height: 100%;
 }
 </style>

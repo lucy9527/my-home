@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-03 11:09:36
- * @LastEditTime: 2020-12-12 00:27:11
+ * @LastEditTime: 2020-12-13 14:41:18
  * @LastEditors: HongXuan.Lu
  */
 const edit = {
@@ -10,16 +10,12 @@ const edit = {
   state: {
     title:"",
     intro:"",
-    content:"",
-    // img:"",
+    blogValue:"",
   },
   mutations: {
     setall(state,val){
-      var content = state.content
       state = val
-      state.content = content
     },
-    // ---------------------------
     settitle(state, newValue) {
       console.log(newValue);
       state.title = newValue
@@ -27,30 +23,23 @@ const edit = {
     setintro(state, newValue) {
       state.intro = newValue
     },
-    setcontent(state, val) {
-      state.content = val
+    setblogValue(state, val) {
+      state.blogValue = val
     },
-    // setimg(state, newValue) {
-    //   state.img = newValue
-    // },
   },
   getters: {
     getall(state){
       return state
     },
-    //---------------不要写错了--------------------
     title(state) {
       return state.title
     },
     intro(state) {
       return state.intro
     },
-    content(state) {
-      return state.content
+    blogValue(state) {
+      return state.blogValue
     },
-    // img(state) {
-    //   return state.img
-    // },
   },
   actions: {}
 }

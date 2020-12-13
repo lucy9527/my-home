@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-13 00:43:09
+ * @LastEditTime: 2020-12-13 20:17:43
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -70,10 +70,10 @@ function dbOptions(op , data,resolve){
       })
       break;
     case 'insert':
-      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${''}')` //初始化给comment赋值文章id
+      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment,date) values ('${data.title}','${data.intro}','${data.blogValue}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${''}',${data.date})` //初始化给comment赋值文章id
       queryData(sql,'insert').then(userData=>
         {
-          resolve(userData? 'no' : 'yes')
+          resolve('yes')
         })
       break;
     case 'update':
@@ -89,6 +89,13 @@ function dbOptions(op , data,resolve){
       break;
     case 'delpaper':
       var sql = `DELETE FROM article where articleId = '${data}' `
+      queryData(sql,'del').then(data=>
+        {
+          resolve(data)
+        })
+      break;
+    case 'count':
+      var sql = `update article set count=count+1 where articleId = '${data}' `
       queryData(sql,'del').then(data=>
         {
           resolve(data)

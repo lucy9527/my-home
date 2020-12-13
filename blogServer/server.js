@@ -2,7 +2,7 @@
  * @Description: 服务器入口
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-12 18:48:29
+ * @LastEditTime: 2020-12-13 20:17:56
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
@@ -15,7 +15,7 @@ const {login,register} = require('./dealUser/dealuser.js')
 const {getLifeTree,addLifeNode, deleteLifeNode} = require('./timeTree/dealTimeTree.js')
 const {getTaskTree,addTaskNode,deleteTaskNode} = require('./taskTree/dealTaskTree.js')
 //---------------文章处理--------------
-const {edit,paperAll,paperId,paperView, userpaper ,delpaper} = require('./dealPaper/dealPaper.js')
+const {edit,paperAll,paperId,paperView, userpaper ,delpaper,countAdd } = require('./dealPaper/dealPaper.js')
 //------------------处理所有请求-------------------------
 // 解析body
 // parse application/json  
@@ -45,6 +45,7 @@ app.post('/paper',paperId)
 app.post('/myview',paperView)
 app.post('/userpaper',userpaper)
 app.post('/delPaper',delpaper)
+app.post('/count',countAdd)
 //--------------------生活树单元--------------------
 app.post('/deleteLife/:lifenodeId',deleteLifeNode)
 app.post('/addLife',addLifeNode)

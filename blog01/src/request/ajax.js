@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-13 00:20:36
+ * @LastEditTime: 2020-12-13 20:14:13
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config'
@@ -121,9 +121,29 @@ function subCom(type,id ,data){
     }
   })
 }
+
+function countAdd(type,id){
+  var obj = {}
+  obj['id'] = id
+  ajax.open('post',baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/json');
+  ajax.send(JSON.stringify(obj))
+  return new Promise((resolve,reject)=>{
+    try{
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+          resolve(ajax.responseText);
+        }
+      }
+    }catch(err){
+      reject(err)
+    }
+  })
+}
 export const request = logOrReg;
 export const publish = createBlog;
 export const getBlog = getBlogs;
 export const subV = subCom;
 export const getUserBlog = getUserBlogs;
 export const deleteBlog = deleteUserBlog;
+export const countadd = countAdd;

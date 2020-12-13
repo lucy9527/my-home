@@ -2,7 +2,7 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-12 19:00:19
+ * @LastEditTime: 2020-12-13 20:08:25
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -26,7 +26,7 @@
             <p :class="'color' + Math.floor(Math.random() * 5)" class="title">
               {{ item.title }}
             </p>
-            <p class="date">2020-1-30</p>
+            <p class="date">{{ dateformat(item.date) }}</p>
             <p class="count">阅读量：{{ item.count }}</p>
           </div>
         </div>
@@ -39,7 +39,7 @@
 <script>
 import pageVue from "@/components/common/pagination.vue";
 import { getBlog } from "@/request/ajax.js";
-import { getRandomId } from "../../utils/help.js";
+import { getRandomId, dateFormat } from "../../utils/help.js";
 export default {
   components: {
     pageVue,
@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     getRandom: getRandomId,
+    dateformat: dateFormat,
     goTo(type, id) {
       if (type == "blog") this.$store.commit("allpaper/setarticleId", id);
       this.$router.push(type);

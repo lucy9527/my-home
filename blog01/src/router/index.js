@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-11 17:05:27
+ * @LastEditTime: 2020-12-13 19:55:42
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -13,7 +13,6 @@ import myArticle from '../view/userArticles/myArticle.vue'
 import game from '../view/game/index.vue'
 import edit from '../view/paperEdit/index.vue'
 import blog from '../view/paperContent/index.vue'
-import editor from '../components/editor.vue'
 import lifetree from '../view/lifeTree'
 import tasktree from '../view/taskTree'
 
@@ -52,10 +51,6 @@ const routes = [
     path: "/blog",
     name : 'blog',
     component : blog  }, 
-  {
-    path: "/editor",
-    name : 'editor',
-    component : editor  },
   {
     path: "/lifetree",
     name : 'lifetree',
