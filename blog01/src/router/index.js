@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-13 19:55:42
+ * @LastEditTime: 2020-12-13 23:10:17
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -10,7 +10,6 @@ import VueRouter from 'vue-router'
 import login from '../view/login/index.vue'
 import home from '../view/home/index.vue'
 import myArticle from '../view/userArticles/myArticle.vue'
-import game from '../view/game/index.vue'
 import edit from '../view/paperEdit/index.vue'
 import blog from '../view/paperContent/index.vue'
 import lifetree from '../view/lifeTree'
@@ -39,10 +38,6 @@ const routes = [
     path: "/myArticle",
     name : 'myArticle',
     component : myArticle  },
-  {
-    path: "/game",
-    name : 'game',
-    component : game  },
   {
     path: "/edit",
     name : 'edit',

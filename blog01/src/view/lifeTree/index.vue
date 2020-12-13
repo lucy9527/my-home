@@ -2,30 +2,32 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-13 12:04:56
+ * @LastEditTime: 2020-12-13 22:33:32
  * @LastEditors: HongXuan.Lu
 -->
 <template>
   <div class="lifeTree">
     <header-vue type="lifeTree"></header-vue>
-    <div class="tree-box">
-      <div class="node-border" v-for="(item, index) in treeData" :key="index">
-        <div class="lifenode">
-          <!-- 随机宽度、随机颜色 -->
-          <div class="node__content">
-            <div class="node__time">
-              {{ dateformat(item.end) }}
-            </div>
-            <div class="node__text">
-              {{ item.content }}
-            </div>
-            <div class="node-delete">
-              <el-button
-                @click="deleteNode(item.lifenodeId)"
-                type="danger"
-                icon="el-icon-delete"
-                circle
-              ></el-button>
+    <div class="bgimg">
+      <div class="tree-box">
+        <div class="node-border" v-for="(item, index) in treeData" :key="index">
+          <div class="lifenode">
+            <!-- 随机宽度、随机颜色 -->
+            <div class="node__content">
+              <div class="node__time">
+                {{ dateformat(item.end) }}
+              </div>
+              <div class="node__text">
+                {{ item.content }}
+              </div>
+              <div class="node-delete">
+                <el-button
+                  @click="deleteNode(item.lifenodeId)"
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                ></el-button>
+              </div>
             </div>
           </div>
         </div>

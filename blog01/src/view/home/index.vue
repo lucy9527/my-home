@@ -2,7 +2,7 @@
  * @Description: 首页--所有博客
  * @Author: Do not edit
  * @Date: 2020-11-19 15:19:04
- * @LastEditTime: 2020-12-12 19:37:23
+ * @LastEditTime: 2020-12-13 23:07:11
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -30,6 +30,5 @@ export default {
 
 <style lang="scss">
 .home {
-  height: 100%;
 }
 </style>
