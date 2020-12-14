@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-13 22:31:12
+ * @LastEditTime: 2020-12-14 10:09:24
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -79,7 +79,7 @@ export default {
     // ---------接口部分------------
     async submitAdd(data) {
       this.dialogVisible = false;
-      data.dateEnd = data.dateEnd.getTime();
+      data.end = data.end.getTime();
       data.tasknodeId =
         this.getId(2147483646) + sessionStorage.getItem("username");
       var res = await addTaskNode("addTask", data);

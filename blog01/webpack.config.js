@@ -2,7 +2,7 @@
  * @Description: webpack配置文件
  * @Author: Do not edit
  * @Date: 2020-11-19 11:29:16
- * @LastEditTime: 2020-12-09 13:31:40
+ * @LastEditTime: 2020-12-14 08:49:06
  * @LastEditors: HongXuan.Lu
  */
 const path = require('path')
@@ -19,7 +19,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js' ,
-    publicPath: './dist/'          // 前面加了个点不知道有什么用，图片url可以使用
+    publicPath: '/dist/'          // 前面加了个点不知道有什么用，图片url可以使用
   },
   module:{
     rules:[

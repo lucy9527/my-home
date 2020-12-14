@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-12 19:52:26
+ * @LastEditTime: 2020-12-13 23:37:07
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -112,20 +112,6 @@ export default {
   position: relative;
   display: flex;
   justify-content: space-around;
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    min-height: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    opacity: 0.6;
-    z-index: -1;
-    background: url("../../assets/images/bg/myPaper.jpg");
-    background-size: 100%;
-  }
   .article-main {
     width: 80%;
   }

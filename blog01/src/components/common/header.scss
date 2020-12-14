@@ -41,26 +41,14 @@
 }
 .homebg {
   @include common;
-  &::after {
-    background: url("./../../assets/images/home.jpg") no-repeat;
-  }
 }
 
 .myArticlebg {
   @include common;
-  &::after {
-    background: url("./../../assets/images/myhome.jpg");
-  }
 }
 .gamebg {
   @include common;
-  &::after {
-    background: url("./../../assets/images/game.jpg");
-  }
 }
 .editbg {
   @include common;
-  &::after {
-    background: url("./../../assets/images/edit.jpg");
-  }
 }

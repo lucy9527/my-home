@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 10:11:40
- * @LastEditTime: 2020-12-11 23:20:13
+ * @LastEditTime: 2020-12-14 10:09:17
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -11,12 +11,12 @@
       <el-form-item label="任务名：" prop="name">
         <el-input v-model="addForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="结束时间：" prop="dateEnd">
+      <el-form-item label="结束时间：" prop="end">
         <el-col :span="11">
           <el-date-picker
             type="date"
             placeholder="选择日期"
-            v-model="addForm.dateEnd"
+            v-model="addForm.end"
             style="width: 100%"
           ></el-date-picker>
         </el-col>
@@ -54,7 +54,7 @@ export default {
     return {
       addForm: {
         name: "",
-        dateEnd: "",
+        end: "",
         difficulty: "", //多选框这里是【】，单选是""
         content: "",
         tasklog: "",
@@ -68,21 +68,11 @@ export default {
       this.$emit("submit", data);
       this.addForm = {
         name: "",
-        dateEnd: "",
+        end: "",
         difficulty: "", //多选框这里是【】，单选是""
         content: "",
         tasklog: "",
       };
-      // this.$refs["addForm"].validate((valid) => {
-      //   //必须有这部分代码才会去验证
-      //   if (valid) {
-      //     //成功执行代码
-      //     this.$emit("submit", this.addForm);
-      //   } else {
-      //     this.$messge.error("error submit!!");
-      //     return false;
-      //   }
-      // });
     },
     resetForm() {
       this.$refs["addForm"].resetFields();

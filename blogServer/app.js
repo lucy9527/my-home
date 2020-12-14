@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-08 19:19:03
- * @LastEditTime: 2020-12-08 21:02:35
+ * @LastEditTime: 2020-12-14 17:15:51
  * @LastEditors: HongXuan.Lu
  */
 const HTTP = require('http');
@@ -25,33 +25,63 @@ const server = HTTP.createServer((req,res)=>{
         res.write(js)
         res.end()
         break;
-      case 'dist/edit.jpg':
+      case 'dist/0.jpg':
         res.setHeader('Content-Type', 'image/jpeg')
-        var p1 = fs.readFileSync('./blog01/dist/edit.jpg')
+        var p1 = fs.readFileSync('./blog01/dist/0.jpg')
         res.write(p1)
         res.end()
         break;
-      case 'dist/game.jpg':
+      case 'dist/1.jpg':
         res.setHeader('Content-Type', 'image/jpeg')
-        var p1 = fs.readFileSync('./blog01/dist/game.jpg')
+        var p1 = fs.readFileSync('./blog01/dist/1.jpg')
         res.write(p1)
         res.end()
         break;
-      case 'dist/home.jpg':
+      case 'dist/2.jpg':
         res.setHeader('Content-Type', 'image/jpeg')
-        var p1 = fs.readFileSync('./blog01/dist/home.jpg')
+        var p1 = fs.readFileSync('./blog01/dist/2.jpg')
         res.write(p1)
         res.end()
         break;
-      case 'dist/myhome.jpg':
+      case 'dist/3.jpg':
         res.setHeader('Content-Type', 'image/jpeg')
-        var p1 = fs.readFileSync('./blog01/dist/myhome.jpg')
+        var p1 = fs.readFileSync('./blog01/dist/3.jpg')
         res.write(p1)
         res.end()
         break;
-      case 'dist/zhanwei.jpg':
+      case 'dist/4.jpg':
         res.setHeader('Content-Type', 'image/jpeg')
-        var p1 = fs.readFileSync('./blog01/dist/zhanwei.jpg')
+        var p1 = fs.readFileSync('./blog01/dist/4.jpg')
+        res.write(p1)
+        res.end()
+        break;
+        case 'dist/articlebg.jpg':
+        res.setHeader('Content-Type', 'image/jpeg')
+        var p1 = fs.readFileSync('./blog01/dist/articlebg.jpg')
+        res.write(p1)
+        res.end()
+        break;
+      case 'dist/editbg.jpg':
+        res.setHeader('Content-Type', 'image/jpeg')
+        var p1 = fs.readFileSync('./blog01/dist/editbg.jpg')
+        res.write(p1)
+        res.end()
+        break;
+      case 'dist/homebg.jpg':
+        res.setHeader('Content-Type', 'image/jpeg')
+        var p1 = fs.readFileSync('./blog01/dist/homebg.jpg')
+        res.write(p1)
+        res.end()
+        break;
+      case 'dist/myPaperbg.jpg':
+        res.setHeader('Content-Type', 'image/jpeg')
+        var p1 = fs.readFileSync('./blog01/dist/myPaperbg.jpg')
+        res.write(p1)
+        res.end()
+        break;
+      case 'dist/lifetreebg.jpg':
+        res.setHeader('Content-Type', 'image/jpeg')
+        var p1 = fs.readFileSync('./blog01/dist/lifetreebg.jpg')
         res.write(p1)
         res.end()
         break;

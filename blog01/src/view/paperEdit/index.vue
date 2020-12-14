@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 14:59:40
+ * @LastEditTime: 2020-12-13 23:37:44
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -26,5 +26,18 @@ export default {
 
 <style lang="scss">
 .edit-page {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("../../assets/images/editbg.jpg");
+    background-size: 100%;
+    opacity: 0.5;
+    z-index: -1;
+  }
 }
 </style>

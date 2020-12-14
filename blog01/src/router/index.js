@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-13 23:10:17
+ * @LastEditTime: 2020-12-13 23:41:06
  * @LastEditors: HongXuan.Lu
  */
 import Vue from 'vue'
@@ -12,8 +12,8 @@ import home from '../view/home/index.vue'
 import myArticle from '../view/userArticles/myArticle.vue'
 import edit from '../view/paperEdit/index.vue'
 import blog from '../view/paperContent/index.vue'
-import lifetree from '../view/lifeTree'
-import tasktree from '../view/taskTree'
+import lifetree from '../view/lifeTree/index.vue'
+import tasktree from '../view/taskTree/index.vue'
 
 Vue.use(VueRouter)
 

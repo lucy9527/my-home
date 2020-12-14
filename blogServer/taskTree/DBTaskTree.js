@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-11 23:48:42
+ * @LastEditTime: 2020-12-14 10:07:35
  * @LastEditors: HongXuan.Lu
  */
 const mysql = require("mysql");
@@ -46,7 +46,7 @@ function dbOptions(op , data,resolve){
       queryData(sql,'all').then(data=>resolve(data))
       break;
     case 'addTaskNode':
-      var sql = `INSERT INTO tasktree (name,end,difficulty,content,tasklog,username,tasknodeId) value ("${data.name}","${data.dateEnd}","${data.difficulty}","${data.content}","${data.tasklog}","${data.username}","${data.tasknodeId}") `
+      var sql = `INSERT INTO tasktree (name,end,difficulty,content,tasklog,username,tasknodeId) value ("${data.name}","${data.end}","${data.difficulty}","${data.content}","${data.tasklog}","${data.username}","${data.tasknodeId}") `
       queryData(sql,'insert').then(data=>resolve(data))
       break;
     case 'deleTaskNode':

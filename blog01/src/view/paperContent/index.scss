@@ -1,5 +1,18 @@
 .paper-content {
   height: 100%;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.6;
+    z-index: -1;
+    background: url("../../assets/images/articlebg.jpg");
+    background-size: 100%;
+  }
   .paper-box {
     min-height: 575px;
     position: relative;
@@ -8,19 +21,6 @@
     min-width: 1200px;
     width: 100%;
     text-align: center;
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      opacity: 0.6;
-      z-index: -1;
-      background: url("../../assets/images/bg/article.jpg");
-      background-size: 100%;
-    }
     .blog-header {
       .title {
         font-size: 18px;

@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 23:12:35
+ * @LastEditTime: 2020-12-13 23:34:26
  * @LastEditors: HongXuan.Lu
 -->
 <template>
-  <div class="header" :class="type + 'bg'">
+  <div class="header">
     <div class="left">
       <a @click="goTo('home')" class="hand scale1_5">首页</a>
       <a @click="goTo('myArticle')" class="hand scale1_5">我的博客</a>

@@ -39,7 +39,7 @@ const formRule = {
   // dateBegin: [
   //   { type: 'date', required: true, message: '请选择开始时间', trigger: 'change' }
   // ],
-  dateEnd: [
+  end: [
     { type: 'date', required: true, message: '请选择结束时间', trigger: 'change' }
   ],
   // label: [

@@ -2,7 +2,7 @@
  * @Description: 首页主题部分
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 20:08:25
+ * @LastEditTime: 2020-12-14 09:51:14
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -15,10 +15,7 @@
         @click="goTo('blog', item.articleId)"
       >
         <div class="blog-img">
-          <img
-            :src="require(`../../assets/images/home-paper/${getRandom(5)}.jpg`)"
-            alt="#"
-          />
+          <div :class="'img' + getRandom(5)"></div>
         </div>
         <div class="blog-intro">
           <p class="intro">{{ item.intro }}</p>
