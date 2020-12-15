@@ -2,13 +2,13 @@
  * @Description: webpack配置文件
  * @Author: Do not edit
  * @Date: 2020-11-19 11:29:16
- * @LastEditTime: 2020-12-14 08:49:06
+ * @LastEditTime: 2020-12-15 17:10:11
  * @LastEditors: HongXuan.Lu
  */
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '/', dir)
@@ -37,10 +37,21 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use:[
-        {loader : 'style-loader'},
-        {loader : 'css-loader'}
-        ]
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // 这里可以指定一个 publicPath
+              // 默认使用 webpackOptions.output中的publicPath
+              publicPath: '../'
+            },
+          },
+          'css-loader',
+        ],
+        // use:[
+        // {loader : 'style-loader'},
+        // {loader : 'css-loader'}
+        // ]
        },
       {
         test: /\.scss$/,
@@ -65,10 +76,11 @@ module.exports = {
   plugins:[
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash:4].css",
-      chunkFilename: "[id].[contenthash:4].css"
+      // 类似 webpackOptions.output里面的配置 可以忽略
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
-    new ExtractTextPlugin('/css/index.css'), 
+    // new ExtractTextPlugin("styles.css"),
   ],
   resolve:{
     // extensions: ['.js', '.vue',], //列表里面多组文件出现后，以第一种为准

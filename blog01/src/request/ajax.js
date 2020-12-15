@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-13 20:14:13
  * @LastEditors: HongXuan.Lu
  */
-import baseUrl from './config'
+import baseUrl from './config.js'
 var ajax = new XMLHttpRequest()
 
 //--------------------用户登录----------------------------
@@ -14,7 +14,7 @@ function logOrReg(type,params){
   ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   ajax.send('username='+params.username+'&password='+params.password)
   return new Promise((resolve,reject)=>{
-    try{   //使用promise包装数据，得到异步数据
+    try{   
       ajax.onreadystatechange = function(){
         if(ajax.readyState == 4 && ajax.status == 200){
           resolve(ajax.responseText);
