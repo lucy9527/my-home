@@ -1,21 +1,26 @@
 /*
  * @Description: 
- * @Author: Do not edit
+ * @Author: Do not create
  * @Date: 2020-12-12 15:58:58
- * @LastEditTime: 2020-12-13 20:18:18
+ * @LastEditTime: 2020-12-16 11:34:47
  * @LastEditors: HongXuan.Lu
  */
 const {getId} = require('../tools.js')
 const dbArticle = require('./dbArticle.js');
 
-function edit(req,res){
+function create(req,res){
   var reqData = req.body
   reqData.articleId = getId()
   new Promise(function(resolve,reject){
     dbArticle('insert', reqData ,resolve)
   }).then(data=>res.end(data))
 }
-
+function edit(req,res){
+  var reqData = req.body
+  new Promise(function(resolve,reject){
+    dbArticle('modify', reqData ,resolve)
+  }).then(data=>res.end(data))
+}
 function paperAll(req,res){
   new Promise(function(resolve,reject){
     dbArticle('searchAll', req.body.pageNo ,resolve)
@@ -23,7 +28,6 @@ function paperAll(req,res){
   }).then(data=>{
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     // Array 的type 为object
-    // data.push({'img':readDict()})
     res.send(data)
     res.end()})
 }
@@ -67,6 +71,7 @@ function countAdd(req,res){
 }
 module.exports = {
   edit,
+  create,
   paperAll,
   paperId,
   paperView,

@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-13 20:17:43
+ * @LastEditTime: 2020-12-16 11:37:44
  * @LastEditors: HongXuan.Lu
  */
 // 数据库操作也是异步的
@@ -70,8 +70,15 @@ function dbOptions(op , data,resolve){
       })
       break;
     case 'insert':
-      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment,date) values ('${data.title}','${data.intro}','${data.blogValue}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${''}',${data.date})` //初始化给comment赋值文章id
+      var sql = `INSERT INTO article(title,intro,content,articleId,count,labels,username,comment,date) values ('${data.title}','${data.intro}','${data.content}','${data.articleId}','${data.count || 0 }','${data.labels || ""}','${data.username}','${''}',${data.date})` //初始化给comment赋值文章id
       queryData(sql,'insert').then(userData=>
+        {
+          resolve('yes')
+        })
+      break;
+    case 'modify':
+      var sql = `UPDATE article SET title = '${data.title}', intro = '${data.intro}', content = '${data.content}', date = '${data.date}' where articleId = '${data.articleId}'`
+      queryData(sql,'modify').then(userData=>
         {
           resolve('yes')
         })

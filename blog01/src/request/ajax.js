@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-25 20:30:11
- * @LastEditTime: 2020-12-13 20:14:13
+ * @LastEditTime: 2020-12-16 09:17:16
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config.js'
@@ -42,6 +42,7 @@ function createBlog(type,bodyData){
     }
   })
 }
+
 //---------------------获取文章------------------------
 function getBlogs(type,articleId){
   ajax.open('post', baseUrl+type ,true)

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 19:56:50
+ * @LastEditTime: 2020-12-16 10:22:04
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -20,7 +20,7 @@
             <!-- props就是里面的属性，toolbars也是属性，很多已经是默认值了 -->
             <mavon-editor
               style="height: 100%"
-              v-model="article.blogValue"
+              v-model="article.content"
               undo="true"
               redo="true"
               language="cn"
@@ -46,43 +46,49 @@ export default {
       article: {
         title: "",
         intro: "",
-        blogValue: "",
+        content: "",
+        username: sessionStorage.getItem("username"),
+        date: new Date().getTime(),
       },
       curclick: "",
       saveSign: false,
+      opType: "",
     };
   },
   methods: {
-    async publishData() {
-      var data = this.$store.getters["blogedit/getall"];
-      data.username = sessionStorage.getItem("username");
-      var pubDate = new Date();
-      data.date = pubDate.getTime();
-      await publish("edit", data);
+    async publishData(data) {
+      var res;
+      if (this.opType === "create") {
+        res = await publish("create", data);
+      } else {
+        res = await publish("edit", data);
+      }
+      if (res === "yes") this.$router.push("home");
     },
     onSubmit() {
       if (!this.saveSign) {
         this.$message.error("编辑后未点击红色保存按钮！");
         return;
       }
-      this.$store.commit("blogedit/setall", this.article);
       if (this.article.title == "" || this.article.intro == "") {
         this.$message.error("文章标题、要纲不能为空！");
         return;
       }
-      this.publishData();
-      this.$router.push("home");
+      this.publishData(this.article);
     },
     save(value, render) {
       this.$message.success("已保存！");
       this.saveSign = true;
       // 两个都是String类型   保存按钮
-      this.article.blogValue = render;
-      // this.$store.commit("blogedit/setcontent", render);
+      this.article.content = render;
     },
   },
   mounted() {
-    this.article = this.$store.getters["blogedit/getall"];
+    console.log(this.$route.params);
+    this.opType = this.$route.params.type;
+    if (this.opType === "edit") {
+      this.article = this.$store.getters["allpaper/getcurpaper"];
+    }
   },
 };
 </script>

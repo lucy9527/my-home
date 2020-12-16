@@ -1,8 +1,8 @@
 /*
  * @Description: 服务器入口
- * @Author: Do not edit
+ * @Author: Do not create
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-13 20:17:56
+ * @LastEditTime: 2020-12-16 09:45:59
  * @LastEditors: HongXuan.Lu
  */
 const express = require('express')
@@ -15,7 +15,7 @@ const {login,register} = require('./dealUser/dealuser.js')
 const {getLifeTree,addLifeNode, deleteLifeNode} = require('./timeTree/dealTimeTree.js')
 const {getTaskTree,addTaskNode,deleteTaskNode} = require('./taskTree/dealTaskTree.js')
 //---------------文章处理--------------
-const {edit,paperAll,paperId,paperView, userpaper ,delpaper,countAdd } = require('./dealPaper/dealPaper.js')
+const { edit ,create,paperAll,paperId,paperView, userpaper ,delpaper,countAdd } = require('./dealPaper/dealPaper.js')
 //------------------处理所有请求-------------------------
 // 解析body
 // parse application/json  
@@ -39,6 +39,7 @@ app.post("*",function(req,res,next){
 app.post('/login',login)
 app.post('/register',register)
 //-------------------文章单元-----------------------
+app.post('/create',create)
 app.post('/edit',edit)
 app.post('/allpaper',paperAll)
 app.post('/paper',paperId)

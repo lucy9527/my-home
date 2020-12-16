@@ -37,15 +37,17 @@ draw.prototype.drawTitle = function(start , end , title ,color){
   this.ct.beginPath()
   this.ct.moveTo(this.x0 ,this.y0)
   this.ct.strokeStyle = color
+  this.ct.font = '20px STHeiti, SimHei';
+  this.ct.textBaseline = "bottom"
   var x1 = this.outWidth*Math.cos((end-start)/2 + start)
   var y1 = this.outWidth*Math.sin((end-start)/2 + start)
   this.ct.lineTo(this.x0 + x1, this.y0 + y1)
   if(x1>0) {
     this.ct.lineTo(this.x0 + x1+this.titleWidth , this.y0 + y1) 
-    this.ct.fillText(title,this.x0 + x1, this.y0 + y1 )
+    this.ct.fillText(title,this.x0 + 5 + x1, this.y0 + y1 )
   }else{
     this.ct.lineTo(this.x0 + x1-this.titleWidth , this.y0 + y1) 
-    this.ct.fillText(title,this.x0 + x1 -this.titleWidth, this.y0 + y1 )
+    this.ct.fillText(title,this.x0 + 5 + x1 -this.titleWidth, this.y0 + y1 )
   }
   this.ct.stroke()
 }

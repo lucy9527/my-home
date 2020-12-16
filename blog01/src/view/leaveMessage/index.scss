@@ -1,0 +1,95 @@
+.taskTree {
+  position: relative;
+  width: 100%;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("../../assets/images/editbg.jpg");
+    background-size: 100%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+  .bgimg {
+    min-height: 575px;
+    .tree-box {
+      margin-left: 10%;
+      color: white;
+      border-left: 4px solid rgb(87, 87, 122);
+      .node-border {
+        position: relative;
+        text-align: left;
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: lightblue;
+          left: -7px;
+        }
+        &:hover {
+          &::before {
+            transform: scale(1.5);
+            .node__content {
+              background-color: rgba(222, 200, 0, 1);
+            }
+            transition: all 0.3s;
+          }
+        }
+        .tasknode {
+          position: relative;
+          width: 50%;
+          height: 60px;
+          .node__content {
+            width: 99%;
+            margin-left: 1%;
+            padding: {
+              left: 5px;
+              top: 3px;
+            }
+            background-color: rgba(255, 169, 0, 1);
+            .node__time {
+              font-size: 13px;
+              line-height: 17px;
+              height: 17px; //如果出现2行字莫名不能挨在一起，调整字的height即可
+            }
+            .node__text {
+              font-size: 16px;
+              line-height: 22px;
+              font-weight: 600;
+              text-indent: 1em;
+              height: 22px;
+            }
+            .node-delete {
+              position: absolute;
+              top: 2px;
+              right: -40px;
+              .el-button {
+                padding: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+    display: flex;
+    .edit {
+    }
+    .el-button {
+    }
+  }
+  .el-dialog {
+    width: 50% !important;
+  }
+}

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-13 23:37:07
+ * @LastEditTime: 2020-12-16 10:07:47
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -24,8 +24,8 @@
         <el-table-column label="日期" width="180">
           <template slot-scope="scope">
             <i class="el-icon-time"></i>
-            <span style="margin-left: 10px"
-              >{{ scope.row.date }}2020-01-01</span
+            <span style="margin-left: 10px">
+              {{ dateformat(scope.row.date) }}</span
             >
           </template>
         </el-table-column>
@@ -36,9 +36,9 @@
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <!-- <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
-            > -->
+            <el-button size="mini" @click="handleEdit(scope.row)">
+              编辑
+            </el-button>
             <el-button
               size="mini"
               type="danger"
@@ -55,6 +55,7 @@
 <script>
 import pageVue from "@/components/common/pagination.vue";
 import { getUserBlog, deleteBlog } from "@/request/ajax";
+import { dateFormat } from "../../utils/help.js";
 export default {
   components: {
     pageVue,
@@ -67,16 +68,17 @@ export default {
     };
   },
   methods: {
+    dateformat: dateFormat,
     pageChange(pageNo) {
       this.getData(pageNo);
     },
     goTo(type, id) {
       if (type == "blog") this.$store.commit("allpaper/setarticleId", id);
-      this.$router.push(type);
+      this.$router.push({ name: type, params: { type: "edit" } });
     },
-    handleEdit(index, row) {
+    handleEdit(row) {
       this.$store.commit("allpaper/setcurpaper", row);
-      this.$message.warning("还未开发");
+      this.$router.push({ name: "edit", params: { type: "edit" } });
     },
     async handleDelete(articleId) {
       const res = await deleteBlog("delPaper", articleId);
