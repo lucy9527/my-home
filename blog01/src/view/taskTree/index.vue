@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: 任务树
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-14 10:09:24
+ * @LastEditTime: 2020-12-18 13:20:55
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -13,7 +13,19 @@
         <div class="node-border" v-for="(item, index) in treeData" :key="index">
           <div class="tasknode">
             <!-- 随机宽度、随机颜色 -->
-            <div class="node__content">
+            <div
+              class="node__content"
+              :style="
+                'width:' +
+                (1100 - Math.floor((item.end - now) / 86400000) * 25) +
+                'px; background-color:' +
+                (Math.floor((item.end - now) / 86400000) > 15
+                  ? 'orange'
+                  : Math.floor((item.end - now) / 86400000) > 3
+                  ? 'yellowgreen'
+                  : 'tomato')
+              "
+            >
               <div class="node__time">
                 {{ dateformat(item.end) }}
               </div>
@@ -33,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="footer">
+    <div class="footer" style="width: 200; background-color: 'rgba(red,0.5)'">
       <p class="edit">编辑添加：</p>
       <div>
         <el-button
@@ -47,11 +59,13 @@
     <el-dialog :visible.sync="dialogVisible" width="30%">
       <add-dialog @submit="submitAdd"></add-dialog>
     </el-dialog>
+    <canvas-vue></canvas-vue>
   </div>
 </template>
 
 <script>
 import headerVue from "@/components/common/header.vue";
+import canvasVue from "@/components/canvas/tabCanvas.vue";
 import { dateFormat, getRandomId } from "../../utils/help.js";
 import addDialog from "../../components/taskTree/addDialog.vue";
 import {
@@ -63,11 +77,13 @@ export default {
   components: {
     headerVue,
     addDialog,
+    canvasVue,
   },
   data() {
     return {
       treeData: [],
       dialogVisible: false,
+      now: new Date().getTime(),
     };
   },
   methods: {

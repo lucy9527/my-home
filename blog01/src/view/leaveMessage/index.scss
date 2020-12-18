@@ -1,4 +1,4 @@
-.taskTree {
+.leaveMsg {
   position: relative;
   width: 100%;
   &::after {
@@ -9,7 +9,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("../../assets/images/editbg.jpg");
+    background: url("../../assets/images/leaveMsg.jpg");
     background-size: 100%;
     opacity: 0.7;
     z-index: -1;
@@ -42,11 +42,11 @@
             transition: all 0.3s;
           }
         }
-        .tasknode {
-          position: relative;
+        .msgNode {
           width: 50%;
           height: 60px;
           .node__content {
+            position: relative;
             width: 99%;
             margin-left: 1%;
             padding: {
@@ -66,13 +66,30 @@
               text-indent: 1em;
               height: 22px;
             }
-            .node-delete {
+            .triangle-left,
+            .triangle-right,
+            .node__deal {
               position: absolute;
-              top: 2px;
-              right: -40px;
-              .el-button {
-                padding: 8px;
-              }
+              top: 0;
+              width: 60px;
+              height: 42px;
+            }
+            .triangle-left {
+              right: -60px;
+              border-right: 60px solid rgba(222, 200, 0, 0);
+              border-bottom: 42px solid rgba(255, 169, 0, 1);
+            }
+            .triangle-right {
+              right: -100px;
+              border-left: 60px solid rgba(222, 200, 0, 0);
+              border-top: 42px solid rgba(255, 169, 0, 1);
+            }
+            .node__deal {
+              right: -300px;
+              width: 200px;
+              background-color: red;
+              display: flex;
+              align-items: center;
             }
           }
         }
@@ -81,10 +98,11 @@
   }
   .footer {
     position: fixed;
-    bottom: 20px;
+    top: 45%;
     right: 100px;
     display: flex;
     .edit {
+      color: yellow;
     }
     .el-button {
     }
