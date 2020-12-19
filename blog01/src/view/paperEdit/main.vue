@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-11-30 08:40:53
- * @LastEditTime: 2020-12-18 19:40:30
+ * @LastEditTime: 2020-12-19 11:14:25
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -80,7 +80,8 @@ export default {
       this.$message.success("已保存！");
       this.saveSign = true;
       // 两个都是String类型   保存按钮
-      console.log(typeof value, "///??", render);
+      value = value.replace(/^'$/, "\'");
+      console.log(value);
       this.article.content = render;
     },
   },
