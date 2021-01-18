@@ -2,7 +2,7 @@
  * @Description: 首页--所有博客
  * @Author: Do not edit
  * @Date: 2020-11-19 15:19:04
- * @LastEditTime: 2020-12-13 23:07:11
+ * @LastEditTime: 2021-01-18 19:30:56
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -23,12 +23,25 @@ export default {
   data() {
     return {};
   },
-  methods: {},
-  mounted() {},
 };
 </script>
 
 <style lang="scss">
 .home {
+  position: relative;
+  min-height: 100%;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.5;
+    z-index: -1;
+    background: url("../../assets/images/homebg.jpg");
+    background-size: 100%;
+  }
 }
 </style>

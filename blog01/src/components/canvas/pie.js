@@ -1,3 +1,10 @@
+/*
+ * @Description: 饼图
+ * @Author: Do not edit
+ * @Date: 2020-12-18 09:25:58
+ * @LastEditTime: 2021-01-18 17:00:25
+ * @LastEditors: HongXuan.Lu
+ */
 var draw = function(ct , data){
   this.ct = ct 
   this.x0 = 200 
@@ -6,12 +13,11 @@ var draw = function(ct , data){
   this.startAngle = 0
   this.endAngle = 0
   this.data = data
-  this.outWidth = this.r + 20
+  this.outWidth = this.r + 60
   this.titleWidth = 50
   this.zone = 0
   this.color = ""
   this.init()  
-  console.log(this);
 }
 
 draw.prototype.init = function(){
@@ -38,7 +44,7 @@ draw.prototype.drawTitle = function(start , end , title ,color){
   this.ct.beginPath()
   this.ct.moveTo(this.x0 ,this.y0)
   this.ct.strokeStyle = color
-  this.ct.font = '20px STHeiti, SimHei';
+  this.ct.font = '16px STHeiti, SimHei';
   this.ct.textBaseline = "bottom"
   var x1 = this.outWidth*Math.cos((end-start)/2 + start)
   var y1 = this.outWidth*Math.sin((end-start)/2 + start)

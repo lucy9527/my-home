@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 17:47:43
- * @LastEditTime: 2020-12-11 23:25:05
+ * @LastEditTime: 2021-01-18 10:50:56
  * @LastEditors: HongXuan.Lu
  */
 import baseUrl from './config.js'
@@ -62,6 +62,24 @@ function getTasktree(type){
     }
   })
 }
+// ---------------更新日志-------------------
+function UpdateLog(type,data){
+  ajax.open('post',baseUrl+type ,true)
+  ajax.setRequestHeader('Content-type','application/json');
+  ajax.send(JSON.stringify(data))
+  return new Promise((resolve,reject)=>{
+    try{
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 && ajax.status == 200){
+          resolve(JSON.parse(ajax.responseText));
+        }
+      }
+    }catch(err){
+      reject(err)
+    }
+  })
+}
 export const addTaskNode = addTasknode;
 export const deleteTaskNode = deleteTasknode;
 export const getTaskTree = getTasktree;
+export const newLog = UpdateLog;

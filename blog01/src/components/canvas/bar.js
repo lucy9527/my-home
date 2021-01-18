@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-16 15:33:16
- * @LastEditTime: 2020-12-18 09:58:13
+ * @LastEditTime: 2021-01-18 17:34:17
  * @LastEditors: HongXuan.Lu
  */
 var drawBar = function(ct , data ,width , height){
@@ -17,7 +17,6 @@ var drawBar = function(ct , data ,width , height){
   this.scaleX = Math.floor((width - 50)/data.length)
   this.scaleY = Math.floor((height - 15)/5)
   this.init()
-  console.log(this);
 }
 
 drawBar.prototype.init = function(){
@@ -32,7 +31,7 @@ drawBar.prototype.drawCorSystem = function(){
   this.ct.lineWidth = 2
   this.ct.lineTo(this.width , this.y0)
   this.ct.lineTo(this.x0,this.y0)
-  this.ct.fillText('0', this.x0-10, this.y0 +10)
+  // this.ct.fillText('0', this.x0-10, this.y0 +10)
   this.ct.lineTo(this.x0 , 0)
   this.ct.stroke()
   this.ct.beginPath()
@@ -50,7 +49,6 @@ drawBar.prototype.draw = function(){
   this.ct.beginPath()
   this.ct.font = '12px';
   for(var i = 0 ;i < this.data.length ;i++){
-    console.log(this.x0+(i+1)*this.scaleX );
     this.ct.fillStyle = this.randomColor()
     this.ct.fillRect(this.x0+(i+1)*this.scaleX-10 , this.y0 -this.data[i].num , 20 , this.data[i].num) //往下生长
     this.ct.fillStyle = 'black'

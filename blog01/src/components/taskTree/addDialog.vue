@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-10 10:11:40
- * @LastEditTime: 2020-12-14 10:09:17
+ * @LastEditTime: 2021-01-16 14:24:20
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -21,8 +21,8 @@
           ></el-date-picker>
         </el-col>
       </el-form-item>
-      <el-form-item label="难度：" prop="label">
-        <el-radio-group v-model="addForm.label">
+      <el-form-item label="难度：" prop="difficulty">
+        <el-radio-group v-model="addForm.difficulty">
           <el-radio label="简单" name="type"></el-radio>
           <el-radio label="有挑战" name="type"></el-radio>
           <el-radio label="困难" name="type"></el-radio>
@@ -54,6 +54,7 @@ export default {
     return {
       addForm: {
         name: "",
+        label: "false",
         end: "",
         difficulty: "", //多选框这里是【】，单选是""
         content: "",
@@ -68,6 +69,7 @@ export default {
       this.$emit("submit", data);
       this.addForm = {
         name: "",
+        label: "false",
         end: "",
         difficulty: "", //多选框这里是【】，单选是""
         content: "",

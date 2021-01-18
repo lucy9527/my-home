@@ -2,7 +2,7 @@
  * @Description: 任务树
  * @Author: Do not edit
  * @Date: 2020-12-09 13:40:36
- * @LastEditTime: 2020-12-18 13:20:55
+ * @LastEditTime: 2021-01-18 19:03:17
  * @LastEditors: HongXuan.Lu
 -->
 <template>
@@ -17,13 +17,21 @@
               class="node__content"
               :style="
                 'width:' +
-                (1100 - Math.floor((item.end - now) / 86400000) * 25) +
+                (item.label === 'false'
+                  ? 1100 -
+                    Math.floor(
+                      ((item.end > now ? item.end : now) - now) / 86400000
+                    ) *
+                      25
+                  : 900) +
                 'px; background-color:' +
-                (Math.floor((item.end - now) / 86400000) > 15
-                  ? 'orange'
-                  : Math.floor((item.end - now) / 86400000) > 3
-                  ? 'yellowgreen'
-                  : 'tomato')
+                (item.label === 'false'
+                  ? Math.floor((item.end - now) / 86400000) > 15
+                    ? 'orange'
+                    : Math.floor((item.end - now) / 86400000) > 3
+                    ? 'yellowgreen'
+                    : 'tomato'
+                  : 'green')
               "
             >
               <div class="node__time">
@@ -32,21 +40,32 @@
               <div class="node__text">
                 {{ item.content }}
               </div>
-              <div class="node-delete">
+              <div class="node-deal">
                 <el-button
-                  @click="deleteNode(item.tasknodeId)"
-                  type="danger"
-                  icon="el-icon-delete"
+                  @click="dealNode(item)"
+                  type="primary"
+                  :icon="
+                    item.label === 'true' ? 'el-icon-check' : 'el-icon-loading'
+                  "
                   circle
-                ></el-button>
+                  >{{ item.label === "true" ? "已完成" : "处理中" }}</el-button
+                >
               </div>
+            </div>
+            <div class="node-delete">
+              <el-button
+                @click="deleteNode(item.tasknodeId)"
+                type="danger"
+                icon="el-icon-delete"
+                circle
+              ></el-button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="footer" style="width: 200; background-color: 'rgba(red,0.5)'">
-      <p class="edit">编辑添加：</p>
+      <p class="edit">编辑添加任务：</p>
       <div>
         <el-button
           @click="editNode"
@@ -56,10 +75,15 @@
         ></el-button>
       </div>
     </div>
+    <!-- 添加任务对话框 -->
     <el-dialog :visible.sync="dialogVisible" width="30%">
       <add-dialog @submit="submitAdd"></add-dialog>
     </el-dialog>
-    <canvas-vue></canvas-vue>
+    <!-- 跟新日志对话框 -->
+    <el-dialog :visible.sync="dealVisible" width="30%">
+      <deal-dialog @updateLogs="updateLog" :dealdata="curItem"></deal-dialog>
+    </el-dialog>
+    <canvas-vue :dataList="treeData"></canvas-vue>
   </div>
 </template>
 
@@ -68,6 +92,7 @@ import headerVue from "@/components/common/header.vue";
 import canvasVue from "@/components/canvas/tabCanvas.vue";
 import { dateFormat, getRandomId } from "../../utils/help.js";
 import addDialog from "../../components/taskTree/addDialog.vue";
+import dealDialog from "./dealDialog/index.vue";
 import {
   addTaskNode,
   deleteTaskNode,
@@ -78,17 +103,28 @@ export default {
     headerVue,
     addDialog,
     canvasVue,
+    dealDialog,
   },
   data() {
     return {
       treeData: [],
       dialogVisible: false,
+      dealVisible: false,
+      curItem: {},
       now: new Date().getTime(),
     };
   },
   methods: {
+    updateLog() {
+      this.dealVisible = !this.dealVisible;
+      this.getall();
+    },
+    dealNode(item) {
+      this.curItem = item;
+      this.dealVisible = !this.dealVisible;
+    },
     editNode() {
-      this.dialogVisible = true;
+      this.dialogVisible = !this.dialogVisible;
     },
     dateformat: dateFormat,
     getId: getRandomId,

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Do not edit
  * @Date: 2020-12-16 21:31:25
- * @LastEditTime: 2020-12-18 10:09:50
+ * @LastEditTime: 2021-01-18 17:34:42
  * @LastEditors: HongXuan.Lu
  */
 var drawLine = function(ct , data ,width , height){
@@ -18,7 +18,6 @@ var drawLine = function(ct , data ,width , height){
   this.beforeX = this.x0
   this.beforeY = this.y0
   this.init()
-  console.log(this);
 }
 
 drawLine.prototype.init = function(){
@@ -33,7 +32,7 @@ drawLine.prototype.drawCorSystem = function(){
   this.ct.lineWidth = 2
   this.ct.lineTo(this.width , this.y0)
   this.ct.lineTo(this.x0,this.y0)
-  this.ct.fillText('0', this.x0-10, this.y0 +10)
+  // this.ct.fillText('0', this.x0-10, this.y0 +10)
   this.ct.lineTo(this.x0 , 0)
   this.ct.stroke()
   this.ct.beginPath()

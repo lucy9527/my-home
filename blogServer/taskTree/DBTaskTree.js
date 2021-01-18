@@ -2,7 +2,7 @@
  * @Description: 文章内容数据库操作
  * @Author: Do not edit
  * @Date: 2020-11-27 18:34:33
- * @LastEditTime: 2020-12-14 10:07:35
+ * @LastEditTime: 2021-01-18 17:06:03
  * @LastEditors: HongXuan.Lu
  */
 const mysql = require("mysql");
@@ -46,12 +46,22 @@ function dbOptions(op , data,resolve){
       queryData(sql,'all').then(data=>resolve(data))
       break;
     case 'addTaskNode':
-      var sql = `INSERT INTO tasktree (name,end,difficulty,content,tasklog,username,tasknodeId) value ("${data.name}","${data.end}","${data.difficulty}","${data.content}","${data.tasklog}","${data.username}","${data.tasknodeId}") `
+      var sql = `INSERT INTO tasktree (name,label,end,difficulty,content,tasklog,username,tasknodeId) value ("${data.name}","${data.label}","${data.end}","${data.difficulty}","${data.content}","${data.tasklog}","${data.username}","${data.tasknodeId}") `
       queryData(sql,'insert').then(data=>resolve(data))
       break;
     case 'deleTaskNode':
       var sql = `DELETE FROM tasktree where tasknodeId = "${data}"`
       queryData(sql,'delete').then(data=>resolve(data))
+      break;
+    case 'updateLog':
+      var sql = `UPDATE tasktree SET tasklog = "${data.tasklog}",label = "true" WHERE tasknodeId = "${data.tasknodeId}"`
+      db.query(sql,function(err,data){
+        if(err){
+          console.log("数据库访问出错",err);
+        }else{
+          resolve('ok');
+        }
+      })
       break;
     default:
       break;
